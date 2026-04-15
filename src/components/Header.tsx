@@ -14,16 +14,16 @@ export function Header() {
   ] as const;
 
   return (
-    <header className="sticky top-0 z-50 border-b bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/80">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link to="/" className="flex items-center gap-2">
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary">
-            <span className="text-lg font-bold text-primary-foreground">G</span>
+    <header className="sticky top-0 z-50 border-b border-border/50 bg-card/80 backdrop-blur-xl">
+      <div className="mx-auto flex h-18 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <Link to="/" className="group flex items-center gap-3">
+          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-primary/80 shadow-lg shadow-primary/20 transition-shadow group-hover:shadow-primary/30">
+            <span className="text-lg font-black text-primary-foreground">G</span>
           </div>
           <div className="flex flex-col">
-            <span className="text-lg font-bold leading-tight text-primary">GALLI</span>
-            <span className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground">
-              Topografia &amp; Georreferenciamento
+            <span className="text-xl font-black leading-tight tracking-tight text-primary">GALLI</span>
+            <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-muted-foreground">
+              Topografia &amp; Geo
             </span>
           </div>
         </Link>
@@ -33,8 +33,8 @@ export function Header() {
             <Link
               key={link.to}
               to={link.to}
-              className="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
-              activeProps={{ className: "bg-accent text-foreground" }}
+              className="rounded-lg px-3.5 py-2 text-sm font-medium text-muted-foreground transition-all hover:bg-accent hover:text-foreground"
+              activeProps={{ className: "bg-primary/10 text-primary font-semibold" }}
             >
               {link.label}
             </Link>
@@ -43,7 +43,7 @@ export function Header() {
             href="https://wa.me/5554984007983?text=Gostaria%20de%20agendar%20uma%20consultoria"
             target="_blank"
             rel="noopener noreferrer"
-            className="ml-2 inline-flex items-center gap-2 rounded-md bg-galli-green px-4 py-2 text-sm font-semibold text-primary-foreground transition-colors hover:bg-galli-green/90"
+            className="ml-3 inline-flex items-center gap-2 rounded-xl bg-galli-green px-5 py-2.5 text-sm font-bold text-primary-foreground shadow-md shadow-galli-green/20 transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-galli-green/25"
           >
             <Phone className="h-4 w-4" />
             Fale Conosco
@@ -52,7 +52,7 @@ export function Header() {
 
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="rounded-md p-2 text-muted-foreground md:hidden"
+          className="rounded-lg p-2.5 text-muted-foreground transition-colors hover:bg-accent md:hidden"
           aria-label="Menu"
         >
           {menuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -60,14 +60,14 @@ export function Header() {
       </div>
 
       {menuOpen && (
-        <div className="border-t bg-card px-4 pb-4 pt-2 md:hidden">
+        <div className="animate-in slide-in-from-top-2 border-t bg-card px-4 pb-6 pt-3 md:hidden">
           <nav className="flex flex-col gap-1">
             {navLinks.map((link) => (
               <Link
                 key={link.to}
                 to={link.to}
-                className="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
-                activeProps={{ className: "bg-accent text-foreground" }}
+                className="rounded-lg px-4 py-3 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+                activeProps={{ className: "bg-primary/10 text-primary font-semibold" }}
                 onClick={() => setMenuOpen(false)}
               >
                 {link.label}
@@ -77,7 +77,7 @@ export function Header() {
               href="https://wa.me/5554984007983?text=Gostaria%20de%20agendar%20uma%20consultoria"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-2 inline-flex items-center justify-center gap-2 rounded-md bg-galli-green px-4 py-2 text-sm font-semibold text-primary-foreground transition-colors hover:bg-galli-green/90"
+              className="mt-3 inline-flex items-center justify-center gap-2 rounded-xl bg-galli-green px-5 py-3 text-sm font-bold text-primary-foreground shadow-md transition-all"
             >
               <Phone className="h-4 w-4" />
               Fale Conosco
