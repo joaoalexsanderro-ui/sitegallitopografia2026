@@ -1,10 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import {
-  ArrowRight, MapPin, FileCheck, Ruler, Shield, Clock, Users,
-  CheckCircle, ChevronDown, Phone, Star, Target, Landmark,
-  TrendingUp, Award, Handshake, AlertTriangle
+  ArrowRight, MapPin, FileCheck, Ruler, Shield, Clock,
+  CheckCircle, ChevronDown, Phone, Star, Target,
+  Award, Handshake, AlertTriangle, ChevronRight
 } from "lucide-react";
 import { useState } from "react";
+import heroBg from "@/assets/hero-bg.jpg";
+import geoImg from "@/assets/geo-section.jpg";
 
 export const Route = createFileRoute("/")({
   component: HomePage,
@@ -14,6 +16,7 @@ function HomePage() {
   return (
     <div>
       <HeroSection />
+      <LogoBar />
       <StatsSection />
       <ForWhoSection />
       <DifferentialsSection />
@@ -28,142 +31,147 @@ function HomePage() {
   );
 }
 
+/* ─── HERO ─── */
 function HeroSection() {
   return (
-    <section className="relative overflow-hidden bg-primary">
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.15),transparent_60%)]" />
-      </div>
-      <div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8 lg:py-32">
-        <div className="grid items-center gap-12 lg:grid-cols-2">
-          <div>
-            <span className="inline-flex items-center rounded-full bg-galli-green/20 px-4 py-1.5 text-sm font-medium text-galli-green">
-              Parceira do Produtor Rural
-            </span>
-            <h1 className="mt-6 text-4xl font-extrabold leading-tight tracking-tight text-primary-foreground sm:text-5xl lg:text-6xl">
-              Consultoria{" "}
-              <span className="text-galli-yellow">gratuita</span> para regularizar seu imóvel
-            </h1>
-            <p className="mt-6 text-lg leading-relaxed text-primary-foreground/80 sm:text-xl">
-              Somos especialistas em georreferenciamento, regularização de imóveis e levantamento topográfico. 
-              Cuidamos de <strong className="text-primary-foreground">todo o processo</strong> — da medição ao registro em cartório — para que você não se preocupe com burocracia.
-            </p>
-            <div className="mt-6 flex flex-wrap gap-3 text-sm text-primary-foreground/70">
-              <span className="flex items-center gap-1.5">
-                <CheckCircle className="h-4 w-4 text-galli-green" /> Análise gratuita de documentação
+    <section className="relative min-h-[90vh] overflow-hidden">
+      {/* Background image */}
+      <img
+        src={heroBg}
+        alt=""
+        width={1920}
+        height={1080}
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/85 to-primary/60" />
+
+      <div className="relative mx-auto flex min-h-[90vh] max-w-7xl items-center px-4 py-20 sm:px-6 lg:px-8">
+        <div className="max-w-2xl">
+          <span className="inline-flex animate-pulse items-center gap-2 rounded-full border border-galli-green/40 bg-galli-green/15 px-5 py-2 text-sm font-semibold text-galli-green backdrop-blur-sm">
+            <span className="h-2 w-2 rounded-full bg-galli-green" />
+            Parceira do Produtor Rural
+          </span>
+
+          <h1 className="mt-8 text-5xl font-black leading-[1.1] tracking-tight text-primary-foreground sm:text-6xl lg:text-7xl">
+            Consultoria{" "}
+            <span className="relative inline-block text-galli-yellow">
+              gratuita
+              <svg className="absolute -bottom-2 left-0 h-3 w-full" viewBox="0 0 200 12" fill="none">
+                <path d="M2 8 C50 2, 150 2, 198 8" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+              </svg>
+            </span>{" "}
+            para regularizar seu imóvel
+          </h1>
+
+          <p className="mt-8 text-lg leading-relaxed text-primary-foreground/75 sm:text-xl">
+            Cuidamos de <strong className="text-primary-foreground">todo o processo</strong> — da medição ao registro em cartório — para que você não se preocupe com burocracia.
+          </p>
+
+          <div className="mt-8 flex flex-col gap-3 text-sm text-primary-foreground/70 sm:flex-row sm:gap-6">
+            {["Análise gratuita de documentação", "Processo completo até o cartório", "Garantia 100%"].map((t) => (
+              <span key={t} className="flex items-center gap-2">
+                <CheckCircle className="h-4 w-4 shrink-0 text-galli-green" /> {t}
               </span>
-              <span className="flex items-center gap-1.5">
-                <CheckCircle className="h-4 w-4 text-galli-green" /> Processo completo até o cartório
-              </span>
-              <span className="flex items-center gap-1.5">
-                <CheckCircle className="h-4 w-4 text-galli-green" /> Garantia 100% ou dinheiro de volta
-              </span>
-            </div>
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-              <a
-                href="https://wa.me/5554984007983?text=Gostaria%20de%20agendar%20uma%20consultoria"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-lg bg-galli-green px-6 py-3.5 text-base font-semibold text-primary-foreground shadow-lg transition-all hover:bg-galli-green/90 hover:shadow-xl"
-              >
-                <Phone className="h-5 w-5" />
-                Quero consultoria com especialista
-              </a>
-            </div>
+            ))}
           </div>
-          <div className="hidden lg:flex lg:justify-center">
-            <div className="relative">
-              <div className="flex h-96 w-80 items-center justify-center rounded-2xl bg-primary-foreground/10 backdrop-blur-sm">
-                <div className="text-center text-primary-foreground/40">
-                  <Ruler className="mx-auto h-16 w-16" />
-                  <p className="mt-2 text-sm font-medium">Precisão e Tecnologia</p>
+
+          <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+            <a
+              href="https://wa.me/5554984007983?text=Gostaria%20de%20agendar%20uma%20consultoria"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center justify-center gap-2.5 rounded-xl bg-galli-green px-8 py-4 text-base font-bold text-primary-foreground shadow-[0_8px_30px_-4px] shadow-galli-green/40 transition-all hover:-translate-y-0.5 hover:shadow-[0_12px_40px_-4px] hover:shadow-galli-green/50"
+            >
+              <Phone className="h-5 w-5" />
+              Quero consultoria gratuita
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </a>
+          </div>
+
+          {/* Social proof */}
+          <div className="mt-10 flex items-center gap-4">
+            <div className="flex -space-x-3">
+              {[1, 2, 3, 4].map((i) => (
+                <div key={i} className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-primary bg-primary-foreground/20 text-xs font-bold text-primary-foreground backdrop-blur-sm">
+                  {["JR", "MS", "AL", "PF"][i - 1]}
                 </div>
+              ))}
+            </div>
+            <div>
+              <div className="flex gap-0.5">
+                {[...Array(5)].map((_, j) => (
+                  <Star key={j} className="h-4 w-4 fill-galli-yellow text-galli-yellow" />
+                ))}
               </div>
-              <div className="absolute -bottom-6 -right-6 rounded-xl bg-galli-yellow p-6 shadow-xl">
-                <p className="text-3xl font-extrabold text-foreground">+4 Anos</p>
-                <p className="mt-1 text-sm text-foreground/80">de experiência em topografia</p>
-              </div>
-              <div className="absolute -left-6 top-8 rounded-xl bg-galli-green p-4 shadow-xl">
-                <p className="text-xl font-extrabold text-primary-foreground">100%</p>
-                <p className="text-xs text-primary-foreground/80">Garantia</p>
-              </div>
+              <p className="text-xs text-primary-foreground/60">Centenas de clientes satisfeitos</p>
             </div>
           </div>
+        </div>
+
+        {/* Right floating cards */}
+        <div className="absolute bottom-12 right-8 hidden flex-col gap-4 lg:flex">
+          <div className="animate-[fadeInUp_0.6s_ease-out] rounded-2xl border border-primary-foreground/10 bg-primary-foreground/10 p-5 backdrop-blur-md">
+            <p className="text-4xl font-black text-galli-yellow">+4 Anos</p>
+            <p className="mt-1 text-sm text-primary-foreground/70">de experiência em topografia</p>
+          </div>
+          <div className="animate-[fadeInUp_0.8s_ease-out] rounded-2xl border border-primary-foreground/10 bg-galli-green/20 p-5 backdrop-blur-md">
+            <p className="text-4xl font-black text-galli-green">100%</p>
+            <p className="mt-1 text-sm text-primary-foreground/70">Garantia de satisfação</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom wave */}
+      <div className="absolute bottom-0 left-0 right-0">
+        <svg viewBox="0 0 1440 60" fill="none" className="w-full">
+          <path d="M0 60V30C360 0 720 0 1080 30C1260 45 1380 52 1440 55V60H0Z" className="fill-background" />
+        </svg>
+      </div>
+    </section>
+  );
+}
+
+/* ─── LOGO BAR ─── */
+function LogoBar() {
+  return (
+    <section className="overflow-hidden border-b bg-background py-6">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <p className="mb-4 text-center text-xs font-semibold uppercase tracking-widest text-muted-foreground/60">
+          Atuação no Norte do Rio Grande do Sul
+        </p>
+        <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-sm font-medium text-muted-foreground">
+          {["Tapejara", "Sertão", "Vila Lângaro", "Estação", "Água Santa", "Coxilha", "Esmeralda", "Pinhal da Serra"].map((c) => (
+            <span key={c} className="flex items-center gap-1.5 whitespace-nowrap">
+              <MapPin className="h-3.5 w-3.5 text-primary/60" />{c}
+            </span>
+          ))}
         </div>
       </div>
     </section>
   );
 }
 
+/* ─── STATS ─── */
 function StatsSection() {
   const stats = [
-    { value: "+4 Anos", label: "de experiência em topografia" },
-    { value: "100%", label: "Garantia de serviço" },
-    { value: "Centenas", label: "de clientes atendidos na região" },
-    { value: "~85%", label: "dos imóveis rurais ainda precisam de GEO" },
+    { value: "+4", suffix: " Anos", label: "de experiência", color: "text-primary" },
+    { value: "100", suffix: "%", label: "Garantia de serviço", color: "text-galli-green" },
+    { value: "Centenas", suffix: "", label: "de clientes atendidos", color: "text-galli-yellow" },
+    { value: "~85", suffix: "%", label: "dos imóveis rurais precisam de GEO", color: "text-primary" },
   ];
 
   return (
-    <section className="border-b bg-card py-12">
-      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 px-4 sm:px-6 lg:grid-cols-4 lg:px-8">
-        {stats.map((stat) => (
-          <div key={stat.label} className="text-center">
-            <p className="text-2xl font-extrabold text-primary sm:text-3xl">{stat.value}</p>
-            <p className="mt-1 text-sm font-medium text-muted-foreground">{stat.label}</p>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function ForWhoSection() {
-  const items = [
-    {
-      icon: Shield,
-      title: "Segurança nas divisas",
-      description: "Quer dormir tranquilo sabendo que as divisas estão corretas, colocando um ponto final nas brigas com vizinhos ou familiares.",
-    },
-    {
-      icon: FileCheck,
-      title: "Regularização completa",
-      description: "Precisa regularizar toda a documentação do imóvel para venda, inventário, financiamento ou sucessão familiar.",
-    },
-    {
-      icon: AlertTriangle,
-      title: "Crédito e documentação",
-      description: "Quer evitar ter crédito negado por documentação irregular. Imóvel regularizado facilita financiamentos e negociações.",
-    },
-    {
-      icon: Ruler,
-      title: "Precisão tecnológica",
-      description: "Busca uma empresa que utiliza equipamentos e softwares modernos, garantindo máxima precisão e agilidade nas medições.",
-    },
-  ];
-
-  return (
-    <section className="bg-background py-20">
+    <section className="bg-background py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
-          <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
-            Para quem é a <span className="text-primary">Galli Topografia</span>?
-          </h2>
-          <p className="mx-auto mt-4 max-w-3xl text-lg text-muted-foreground">
-            Para produtores rurais, proprietários de imóveis, advogados, corretores e engenheiros que buscam 
-            segurança, precisão e tranquilidade na regularização de propriedades.
-          </p>
-        </div>
-        <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {items.map((item) => (
-            <div
-              key={item.title}
-              className="group rounded-xl border bg-card p-6 transition-all hover:border-primary/30 hover:shadow-lg"
-            >
-              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
-                <item.icon className="h-6 w-6" />
-              </div>
-              <h3 className="mt-4 text-lg font-semibold text-foreground">{item.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.description}</p>
+        <div className="grid grid-cols-2 gap-8 lg:grid-cols-4">
+          {stats.map((s) => (
+            <div key={s.label} className="group relative rounded-2xl border bg-card p-6 text-center transition-all hover:border-primary/20 hover:shadow-lg">
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/[0.03] to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
+              <p className={`relative text-4xl font-black ${s.color} sm:text-5xl`}>
+                {s.value}<span className="text-2xl sm:text-3xl">{s.suffix}</span>
+              </p>
+              <p className="relative mt-2 text-sm font-medium text-muted-foreground">{s.label}</p>
             </div>
           ))}
         </div>
@@ -172,53 +180,95 @@ function ForWhoSection() {
   );
 }
 
-function DifferentialsSection() {
-  const diffs = [
-    {
-      icon: Handshake,
-      title: "Processo completo, do início ao fim",
-      description: "Diferente de outras empresas que entregam apenas o projeto básico, nós cuidamos de tudo: coleta de assinaturas dos vizinhos, protocolo em cartório, organização de CAR, CCIR e todos os documentos necessários.",
-    },
-    {
-      icon: FileCheck,
-      title: "Análise gratuita de documentação",
-      description: "Antes de fechar qualquer serviço, oferecemos uma análise gratuita da documentação do seu imóvel, sem compromisso, para que você entenda a situação e o que será necessário.",
-    },
-    {
-      icon: Award,
-      title: "Garantia total",
-      description: "Caso ocorra algum erro por nossa parte, assumimos a responsabilidade e arcamos com os custos. É simples: ou executamos o serviço, ou devolvemos seu dinheiro.",
-    },
-    {
-      icon: Target,
-      title: "Equipamentos de alta tecnologia",
-      description: "Utilizamos equipamentos e softwares modernos e precisos, garantindo maior exatidão nos levantamentos e projetos, com constante evolução nos processos.",
-    },
+/* ─── FOR WHO ─── */
+function ForWhoSection() {
+  const items = [
+    { icon: Shield, title: "Segurança nas divisas", description: "Quer dormir tranquilo sabendo que as divisas estão corretas, colocando um ponto final nas brigas com vizinhos.", color: "from-primary to-primary/80" },
+    { icon: FileCheck, title: "Regularização completa", description: "Precisa regularizar a documentação do imóvel para venda, inventário, financiamento ou sucessão familiar.", color: "from-galli-green to-galli-green/80" },
+    { icon: AlertTriangle, title: "Crédito e documentação", description: "Quer evitar ter crédito negado por documentação irregular. Imóvel regularizado facilita negociações.", color: "from-galli-yellow to-galli-yellow/80" },
+    { icon: Ruler, title: "Precisão tecnológica", description: "Busca uma empresa com equipamentos e softwares modernos, garantindo máxima precisão e agilidade.", color: "from-primary to-primary/80" },
   ];
 
   return (
-    <section className="bg-muted py-20">
+    <section className="bg-muted/50 py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid items-center gap-12 lg:grid-cols-2">
+        <div className="text-center">
+          <span className="inline-flex items-center rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary">
+            Público Alvo
+          </span>
+          <h2 className="mt-4 text-4xl font-black tracking-tight text-foreground sm:text-5xl">
+            Para quem é a Galli?
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
+            Para produtores rurais e proprietários que buscam segurança e tranquilidade na regularização de suas propriedades.
+          </p>
+        </div>
+        <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {items.map((item) => (
+            <div key={item.title} className="group relative overflow-hidden rounded-2xl border bg-card p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+              <div className={`absolute -right-6 -top-6 h-24 w-24 rounded-full bg-gradient-to-br ${item.color} opacity-10 transition-all duration-300 group-hover:scale-[3]`} />
+              <div className="relative">
+                <div className={`flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${item.color} text-primary-foreground shadow-lg`}>
+                  <item.icon className="h-7 w-7" />
+                </div>
+                <h3 className="mt-5 text-lg font-bold text-foreground">{item.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── DIFFERENTIALS ─── */
+function DifferentialsSection() {
+  const diffs = [
+    { icon: Handshake, title: "Processo completo, do início ao fim", description: "Cuidamos de tudo: coleta de assinaturas dos vizinhos, protocolo em cartório, CAR, CCIR e todos os documentos necessários." },
+    { icon: FileCheck, title: "Análise gratuita de documentação", description: "Antes de fechar qualquer serviço, oferecemos uma análise gratuita e sem compromisso para você entender a situação do seu imóvel." },
+    { icon: Award, title: "Garantia total — ou dinheiro de volta", description: "Se houver erro por nossa parte, assumimos a responsabilidade e arcamos com os custos. Simples assim." },
+    { icon: Target, title: "Equipamentos de alta tecnologia", description: "Softwares modernos e equipamentos precisos garantem exatidão nos levantamentos, com constante evolução." },
+  ];
+
+  return (
+    <section className="relative overflow-hidden bg-background py-24">
+      {/* Decorative bg */}
+      <div className="absolute left-0 top-0 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/5 blur-3xl" />
+      <div className="absolute bottom-0 right-0 h-96 w-96 translate-x-1/2 translate-y-1/2 rounded-full bg-galli-green/5 blur-3xl" />
+
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid items-center gap-16 lg:grid-cols-2">
           <div>
-            <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
+            <span className="inline-flex items-center rounded-full bg-galli-green/10 px-4 py-1.5 text-sm font-semibold text-galli-green">
+              Nossos Diferenciais
+            </span>
+            <h2 className="mt-4 text-4xl font-black tracking-tight text-foreground sm:text-5xl">
               Por que escolher a{" "}
-              <span className="text-primary">Galli Topografia</span>?
+              <span className="bg-gradient-to-r from-primary to-galli-green bg-clip-text text-transparent">Galli</span>?
             </h2>
-            <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-              Muitas empresas de topografia realizam apenas o projeto básico e deixam que o cliente resolva 
-              as etapas seguintes sozinho. Na Galli, trabalhamos de forma diferente — cuidamos de <strong>todo o processo</strong>, 
-              com segurança, transparência e compromisso.
+            <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+              Diferente de outras empresas que entregam apenas o projeto básico, nós cuidamos de 
+              <strong className="text-foreground"> todo o processo</strong> com segurança, transparência e compromisso total.
             </p>
+            <a
+              href="https://wa.me/5554984007983?text=Gostaria%20de%20agendar%20uma%20consultoria"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-8 inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3 font-semibold text-primary-foreground transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/25"
+            >
+              <Phone className="h-5 w-5" />
+              Falar com especialista
+            </a>
           </div>
-          <div className="space-y-6">
-            {diffs.map((d) => (
-              <div key={d.title} className="flex gap-4 rounded-xl border bg-card p-5 transition-shadow hover:shadow-md">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                  <d.icon className="h-5 w-5" />
+          <div className="space-y-4">
+            {diffs.map((d, i) => (
+              <div key={d.title} className="group flex gap-5 rounded-2xl border bg-card p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/20 hover:shadow-lg">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-primary/10 to-galli-green/10 text-primary transition-colors group-hover:from-primary group-hover:to-primary group-hover:text-primary-foreground">
+                  <d.icon className="h-6 w-6" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-foreground">{d.title}</h3>
+                  <h3 className="font-bold text-foreground">{d.title}</h3>
                   <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{d.description}</p>
                 </div>
               </div>
@@ -230,181 +280,71 @@ function DifferentialsSection() {
   );
 }
 
+/* ─── GEO SECTION ─── */
 function GeoSection() {
   const benefits = [
     "Segurança jurídica do imóvel",
     "Definição precisa das divisas",
-    "Instalação de marcos físicos no terreno",
-    "Alinhamento correto com vizinhos",
-    "Registro das coordenadas no sistema oficial",
+    "Marcos físicos instalados no terreno",
     "Impede sobreposições e conflitos futuros",
     "Imóvel apto para venda, inventário ou financiamento",
-    "Maior valorização do imóvel no mercado",
+    "Maior valorização no mercado",
   ];
 
-  const operations = [
-    "Compra e venda",
-    "Doação",
-    "Inventários",
-    "Desmembramentos",
-    "Unificações de áreas",
-    "Retificações de matrícula",
-    "Financiamentos bancários",
-  ];
+  const operations = ["Compra e venda", "Doação", "Inventários", "Desmembramentos", "Unificações", "Financiamentos"];
 
   return (
-    <section className="bg-primary py-20 text-primary-foreground">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-12 lg:grid-cols-2">
-          <div>
-            <span className="inline-flex items-center rounded-full bg-galli-yellow/20 px-4 py-1.5 text-sm font-semibold text-galli-yellow">
-              Serviço Principal
-            </span>
-            <h2 className="mt-4 text-3xl font-extrabold sm:text-4xl">
-              Georreferenciamento de Imóveis Rurais
-            </h2>
-            <p className="mt-4 text-lg leading-relaxed text-primary-foreground/80">
-              O georreferenciamento é <strong className="text-primary-foreground">obrigatório para todos os imóveis rurais do Brasil</strong>, 
-              com prazo até <strong className="text-primary-foreground">2029</strong>. Na nossa região, estima-se que apenas 
-              <strong className="text-galli-yellow"> cerca de 15% dos imóveis</strong> já realizaram o processo.
-            </p>
-            <p className="mt-4 text-primary-foreground/80">
-              Esse cadastro é obrigatório para praticamente todas as transações imobiliárias rurais:
-            </p>
-            <div className="mt-4 flex flex-wrap gap-2">
-              {operations.map((op) => (
-                <span key={op} className="rounded-full bg-primary-foreground/10 px-3 py-1 text-sm">
-                  {op}
-                </span>
-              ))}
-            </div>
-          </div>
-          <div>
-            <h3 className="text-xl font-bold">Benefícios do Georreferenciamento</h3>
-            <div className="mt-6 space-y-3">
-              {benefits.map((b) => (
-                <div key={b} className="flex items-start gap-3">
-                  <CheckCircle className="mt-0.5 h-5 w-5 shrink-0 text-galli-green" />
-                  <span className="text-primary-foreground/90">{b}</span>
-                </div>
-              ))}
-            </div>
-            <a
-              href="https://wa.me/5554984007983?text=Gostaria%20de%20saber%20mais%20sobre%20georreferenciamento"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-8 inline-flex items-center gap-2 rounded-lg bg-galli-green px-6 py-3 font-semibold text-primary-foreground transition-all hover:bg-galli-green/90"
-            >
-              <Phone className="h-5 w-5" />
-              Saiba se seu imóvel precisa de GEO
-            </a>
+    <section className="relative overflow-hidden">
+      <div className="grid lg:grid-cols-2">
+        {/* Image side */}
+        <div className="relative min-h-[400px] lg:min-h-[700px]">
+          <img src={geoImg} alt="Vista aérea de propriedade rural georreferenciada" loading="lazy" width={1280} height={720} className="absolute inset-0 h-full w-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent to-primary/20 lg:bg-gradient-to-l lg:from-primary/30 lg:to-transparent" />
+          <div className="absolute bottom-6 left-6 rounded-xl bg-primary/90 p-5 backdrop-blur-sm">
+            <p className="text-3xl font-black text-galli-yellow">~85%</p>
+            <p className="text-sm text-primary-foreground/80">dos imóveis ainda não fizeram GEO</p>
           </div>
         </div>
-      </div>
-    </section>
-  );
-}
 
-function ServicesSection() {
-  const services = [
-    {
-      icon: MapPin,
-      title: "Georreferenciamento",
-      description: "Georreferenciamento de imóveis rurais junto ao INCRA com certificação oficial. Cuidamos de todo o processo até o registro.",
-    },
-    {
-      icon: FileCheck,
-      title: "Regularização de Imóveis",
-      description: "Da medição ao registro em cartório — organização documental, coleta de assinaturas, CAR, CCIR e acompanhamento completo.",
-    },
-    {
-      icon: Ruler,
-      title: "Levantamento Topográfico",
-      description: "Levantamentos topográficos de áreas rurais e urbanas com equipamentos de alta precisão. Medição e curvas de nível.",
-    },
-  ];
-
-  return (
-    <section className="bg-background py-20">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
-          <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
-            As soluções que <span className="text-primary">entregamos</span>
+        {/* Content side */}
+        <div className="bg-primary px-6 py-16 text-primary-foreground sm:px-12 lg:px-16 lg:py-24">
+          <span className="inline-flex items-center rounded-full bg-galli-yellow/20 px-4 py-1.5 text-sm font-bold text-galli-yellow">
+            ⭐ Serviço Principal
+          </span>
+          <h2 className="mt-6 text-4xl font-black leading-tight sm:text-5xl">
+            Georreferenciamento de Imóveis Rurais
           </h2>
-          <p className="mx-auto mt-4 max-w-3xl text-lg text-muted-foreground">
-            Somos especialistas em regularização de imóveis e georreferenciamento junto ao INCRA. 
-            Mesmo com menos de um ano em Tapejara, já atendemos centenas de clientes na região.
+          <p className="mt-6 text-lg leading-relaxed text-primary-foreground/75">
+            <strong className="text-primary-foreground">Obrigatório para todos os imóveis rurais</strong> do Brasil, com prazo até{" "}
+            <span className="rounded bg-galli-yellow/20 px-2 py-0.5 font-bold text-galli-yellow">2029</span>.
           </p>
-        </div>
-        <div className="mt-14 grid gap-8 sm:grid-cols-3">
-          {services.map((service) => (
-            <div
-              key={service.title}
-              className="group relative overflow-hidden rounded-xl border bg-card p-8 shadow-sm transition-all hover:shadow-xl"
-            >
-              <div className="absolute right-0 top-0 h-24 w-24 -translate-y-8 translate-x-8 rounded-full bg-primary/5 transition-transform group-hover:scale-150" />
-              <div className="relative">
-                <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-primary text-primary-foreground">
-                  <service.icon className="h-7 w-7" />
-                </div>
-                <h3 className="mt-5 text-xl font-bold text-foreground">{service.title}</h3>
-                <p className="mt-3 leading-relaxed text-muted-foreground">{service.description}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
 
-function HowItWorksSection() {
-  const steps = [
-    { number: "01", title: "Agendamento", description: "Entre em contato pelo WhatsApp e agende sua consultoria gratuita com um especialista." },
-    { number: "02", title: "Análise gratuita", description: "Visitamos seu imóvel se necessário, analisamos toda documentação e tiramos suas dúvidas — sem custo." },
-    { number: "03", title: "Proposta de solução", description: "Apresentamos as melhores soluções de forma econômica e prática para a sua situação." },
-    { number: "04", title: "Execução completa", description: "Medição, projeto, coleta de assinaturas, protocolo em cartório e acompanhamento até a conclusão." },
-  ];
+          <p className="mt-4 text-sm text-primary-foreground/60">Necessário para:</p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            {operations.map((op) => (
+              <span key={op} className="rounded-full border border-primary-foreground/15 bg-primary-foreground/5 px-3 py-1.5 text-sm font-medium backdrop-blur-sm">
+                {op}
+              </span>
+            ))}
+          </div>
 
-  return (
-    <section className="bg-muted py-20">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
-          <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
-            Como funciona a <span className="text-galli-green">consultoria gratuita</span>
-          </h2>
-          <p className="mx-auto mt-4 max-w-3xl text-lg text-muted-foreground">
-            Temos maestria em analisar documentação e encontrar o melhor caminho para resolver problemas 
-            de forma econômica e prática. Tudo isso, sem nenhum custo para você!
-          </p>
-        </div>
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {steps.map((step, i) => (
-            <div key={step.number} className="relative">
-              {i < steps.length - 1 && (
-                <div className="absolute right-0 top-10 hidden h-0.5 w-full translate-x-1/2 bg-border lg:block" />
-              )}
-              <div className="relative rounded-xl border bg-card p-6">
-                <span className="text-4xl font-extrabold text-primary/20">{step.number}</span>
-                <h3 className="mt-2 text-lg font-bold text-foreground">{step.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{step.description}</p>
+          <div className="mt-8 space-y-3">
+            {benefits.map((b) => (
+              <div key={b} className="flex items-start gap-3">
+                <CheckCircle className="mt-0.5 h-5 w-5 shrink-0 text-galli-green" />
+                <span className="text-primary-foreground/85">{b}</span>
               </div>
-            </div>
-          ))}
-        </div>
-        <div className="mt-10 text-center">
-          <p className="mb-6 text-lg font-medium text-foreground">
-            Você terá a oportunidade de conversar com um especialista e ficar entendido do seu caso{" "}
-            <span className="font-bold text-galli-green">sem pagar nada!</span>
-          </p>
+            ))}
+          </div>
+
           <a
-            href="https://wa.me/5554984007983?text=Gostaria%20de%20agendar%20uma%20consultoria"
+            href="https://wa.me/5554984007983?text=Gostaria%20de%20saber%20sobre%20georreferenciamento"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-lg bg-galli-green px-6 py-3.5 text-base font-semibold text-primary-foreground shadow transition-all hover:bg-galli-green/90 hover:shadow-lg"
+            className="mt-10 inline-flex items-center gap-2 rounded-xl bg-galli-green px-7 py-3.5 font-bold text-primary-foreground shadow-lg shadow-galli-green/25 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-galli-green/30"
           >
             <Phone className="h-5 w-5" />
-            Agendar minha consultoria gratuita
+            Saiba se seu imóvel precisa de GEO
           </a>
         </div>
       </div>
@@ -412,63 +352,52 @@ function HowItWorksSection() {
   );
 }
 
-function UrgencySection() {
-  return (
-    <section className="bg-galli-yellow py-16">
-      <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-        <Clock className="mx-auto h-12 w-12 text-foreground/80" />
-        <h2 className="mt-4 text-3xl font-extrabold text-foreground sm:text-4xl">
-          Mas você precisa correr...
-        </h2>
-        <p className="mt-4 text-lg leading-relaxed text-foreground/80">
-          Nossas agendas ficam frequentemente <strong>fechadas</strong> para esse atendimento especial. 
-          Conseguimos reabrir as consultorias por alguns dias, mas a procura costuma lotar rapidamente.
-        </p>
-        <p className="mt-4 text-xl font-bold text-foreground">
-          Não deixe para depois. Garanta seu atendimento agora.
-        </p>
-        <a
-          href="https://wa.me/5554984007983?text=Gostaria%20de%20agendar%20uma%20consultoria"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-8 inline-flex items-center gap-2 rounded-lg bg-primary px-8 py-4 text-lg font-bold text-primary-foreground shadow-lg transition-all hover:bg-primary/90 hover:shadow-xl"
-        >
-          Quero consultoria com especialista
-          <ArrowRight className="h-5 w-5" />
-        </a>
-      </div>
-    </section>
-  );
-}
-
-function TestimonialsSection() {
-  const testimonials = [
-    { name: "Produtor Rural — Sertão", text: "A Galli cuidou de tudo! Desde a medição até o registro no cartório. Não precisei me preocupar com nenhuma burocracia. Recomendo de olhos fechados." },
-    { name: "Proprietário — Vila Lângaro", text: "Finalmente regularizei meu imóvel. A consultoria gratuita foi fundamental para entender o que precisava ser feito. Equipe muito competente e atenciosa." },
-    { name: "Produtor Rural — Estação", text: "Serviço excelente! Resolveram a documentação de duas áreas minhas de forma rápida e profissional. Inclusive voltei para resolver mais uma propriedade." },
+/* ─── SERVICES ─── */
+function ServicesSection() {
+  const services = [
+    { icon: MapPin, title: "Georreferenciamento", description: "Georreferenciamento de imóveis rurais junto ao INCRA com certificação oficial. Todo o processo até o registro.", badge: "Principal" },
+    { icon: FileCheck, title: "Regularização de Imóveis", description: "Da medição ao registro em cartório — CAR, CCIR, coleta de assinaturas e acompanhamento completo.", badge: null },
+    { icon: Ruler, title: "Levantamento Topográfico", description: "Levantamentos topográficos de áreas rurais e urbanas com equipamentos de alta precisão.", badge: null },
   ];
 
   return (
-    <section className="bg-background py-20">
+    <section className="bg-muted/50 py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
-            O que as pessoas <span className="text-galli-yellow">falam da gente</span>
+          <span className="inline-flex items-center rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary">
+            Soluções
+          </span>
+          <h2 className="mt-4 text-4xl font-black tracking-tight text-foreground sm:text-5xl">
+            Nossas soluções
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
-            Clientes que voltam, indicam nosso trabalho e muitas vezes passam aqui só para tomar um chimarrão.
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
+            Especialistas em regularização de imóveis e georreferenciamento junto ao INCRA.
           </p>
         </div>
-        <div className="mt-14 grid gap-8 sm:grid-cols-3">
-          {testimonials.map((t, i) => (
-            <div key={i} className="rounded-xl border bg-card p-6 shadow-sm">
-              <div className="flex gap-1">
-                {[...Array(5)].map((_, j) => (
-                  <Star key={j} className="h-5 w-5 fill-galli-yellow text-galli-yellow" />
-                ))}
+        <div className="mt-16 grid gap-8 sm:grid-cols-3">
+          {services.map((s) => (
+            <div key={s.title} className="group relative overflow-hidden rounded-3xl border bg-card p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
+              {s.badge && (
+                <span className="absolute right-4 top-4 rounded-full bg-galli-yellow px-3 py-1 text-xs font-bold text-foreground">
+                  {s.badge}
+                </span>
+              )}
+              <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-gradient-to-br from-primary/5 to-galli-green/5 transition-transform duration-500 group-hover:scale-[4]" />
+              <div className="relative">
+                <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-primary/80 text-primary-foreground shadow-lg shadow-primary/20">
+                  <s.icon className="h-8 w-8" />
+                </div>
+                <h3 className="mt-6 text-2xl font-bold text-foreground">{s.title}</h3>
+                <p className="mt-3 leading-relaxed text-muted-foreground">{s.description}</p>
+                <a
+                  href="https://wa.me/5554984007983"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-primary transition-colors hover:text-galli-green"
+                >
+                  Saiba mais <ChevronRight className="h-4 w-4" />
+                </a>
               </div>
-              <p className="mt-4 text-sm leading-relaxed text-muted-foreground italic">"{t.text}"</p>
-              <p className="mt-4 text-sm font-semibold text-foreground">{t.name}</p>
             </div>
           ))}
         </div>
@@ -477,41 +406,185 @@ function TestimonialsSection() {
   );
 }
 
+/* ─── HOW IT WORKS ─── */
+function HowItWorksSection() {
+  const steps = [
+    { number: "01", title: "Agendamento", description: "Entre em contato pelo WhatsApp e agende sua consultoria gratuita.", color: "from-primary to-primary/80" },
+    { number: "02", title: "Análise gratuita", description: "Visitamos seu imóvel, analisamos documentação e tiramos suas dúvidas — sem custo.", color: "from-galli-green to-galli-green/80" },
+    { number: "03", title: "Proposta", description: "Apresentamos as melhores soluções de forma econômica e prática.", color: "from-galli-yellow to-galli-yellow/80" },
+    { number: "04", title: "Execução completa", description: "Medição, projeto, assinaturas, protocolo em cartório e acompanhamento.", color: "from-primary to-galli-green" },
+  ];
+
+  return (
+    <section className="relative overflow-hidden bg-background py-24">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,var(--color-primary)/0.03,transparent_60%)]" />
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="text-center">
+          <span className="inline-flex items-center rounded-full bg-galli-green/10 px-4 py-1.5 text-sm font-semibold text-galli-green">
+            Passo a Passo
+          </span>
+          <h2 className="mt-4 text-4xl font-black tracking-tight text-foreground sm:text-5xl">
+            Como funciona
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
+            Tudo isso, <strong className="text-galli-green">sem nenhum custo</strong> para você na consultoria!
+          </p>
+        </div>
+
+        <div className="relative mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          {/* Connector line */}
+          <div className="absolute left-0 right-0 top-16 hidden h-0.5 bg-gradient-to-r from-primary/20 via-galli-green/20 to-galli-yellow/20 lg:block" />
+
+          {steps.map((step) => (
+            <div key={step.number} className="group relative">
+              <div className="rounded-2xl border bg-card p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                <div className={`flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${step.color} text-lg font-black text-primary-foreground shadow-lg`}>
+                  {step.number}
+                </div>
+                <h3 className="mt-5 text-xl font-bold text-foreground">{step.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{step.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-14 text-center">
+          <a
+            href="https://wa.me/5554984007983?text=Gostaria%20de%20agendar%20uma%20consultoria"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-2 rounded-xl bg-galli-green px-8 py-4 text-base font-bold text-primary-foreground shadow-lg shadow-galli-green/25 transition-all hover:-translate-y-0.5 hover:shadow-xl"
+          >
+            <Phone className="h-5 w-5" />
+            Agendar minha consultoria gratuita
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── URGENCY ─── */
+function UrgencySection() {
+  return (
+    <section className="relative overflow-hidden bg-gradient-to-r from-galli-yellow via-galli-yellow to-galli-yellow/90 py-20">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_50%,rgba(255,255,255,0.15),transparent_60%)]" />
+      <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-foreground/10 backdrop-blur-sm">
+          <Clock className="h-8 w-8 text-foreground" />
+        </div>
+        <h2 className="mt-6 text-4xl font-black text-foreground sm:text-5xl">
+          Mas você precisa correr...
+        </h2>
+        <p className="mt-6 text-lg leading-relaxed text-foreground/75">
+          Nossas agendas ficam frequentemente <strong className="text-foreground">fechadas</strong> para esse atendimento especial. 
+          A procura costuma lotar rapidamente.
+        </p>
+        <p className="mt-4 text-2xl font-black text-foreground">
+          Garanta seu atendimento agora.
+        </p>
+        <a
+          href="https://wa.me/5554984007983?text=Gostaria%20de%20agendar%20uma%20consultoria"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group mt-8 inline-flex items-center gap-2 rounded-xl bg-primary px-8 py-4 text-lg font-bold text-primary-foreground shadow-xl shadow-primary/30 transition-all hover:-translate-y-1 hover:shadow-2xl"
+        >
+          Quero consultoria com especialista
+          <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+        </a>
+      </div>
+    </section>
+  );
+}
+
+/* ─── TESTIMONIALS ─── */
+function TestimonialsSection() {
+  const testimonials = [
+    { name: "Produtor Rural — Sertão", text: "A Galli cuidou de tudo! Desde a medição até o registro no cartório. Não precisei me preocupar com nenhuma burocracia. Recomendo de olhos fechados." },
+    { name: "Proprietário — Vila Lângaro", text: "Finalmente regularizei meu imóvel. A consultoria gratuita foi fundamental para entender o que precisava ser feito. Equipe muito competente e atenciosa." },
+    { name: "Produtor Rural — Estação", text: "Serviço excelente! Resolveram a documentação de duas áreas minhas de forma rápida e profissional. Voltei para resolver mais uma propriedade." },
+  ];
+
+  return (
+    <section className="bg-muted/50 py-24">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="text-center">
+          <span className="inline-flex items-center rounded-full bg-galli-yellow/10 px-4 py-1.5 text-sm font-semibold text-galli-yellow">
+            Depoimentos
+          </span>
+          <h2 className="mt-4 text-4xl font-black tracking-tight text-foreground sm:text-5xl">
+            O que dizem nossos clientes
+          </h2>
+          <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
+            Clientes que voltam, indicam e passam aqui só pra tomar um chimarrão 🧉
+          </p>
+        </div>
+        <div className="mt-16 grid gap-8 sm:grid-cols-3">
+          {testimonials.map((t, i) => (
+            <div key={i} className="group relative overflow-hidden rounded-2xl border bg-card p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+              <div className="absolute -right-4 -top-4 text-8xl font-black text-primary/[0.04]">"</div>
+              <div className="relative">
+                <div className="flex gap-1">
+                  {[...Array(5)].map((_, j) => (
+                    <Star key={j} className="h-5 w-5 fill-galli-yellow text-galli-yellow" />
+                  ))}
+                </div>
+                <p className="mt-5 text-sm leading-relaxed text-muted-foreground">"{t.text}"</p>
+                <div className="mt-6 flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-sm font-bold text-primary">
+                    {t.name.charAt(0)}
+                  </div>
+                  <p className="text-sm font-semibold text-foreground">{t.name}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── FAQ ─── */
 function FAQSection() {
   const faqs = [
-    { q: "Vou precisar pagar alguma coisa na consultoria?", a: "Não! O atendimento executado pelos nossos especialistas é completamente gratuito. Visitamos seu imóvel, sanamos todas as suas dúvidas, analisamos suas documentações e propomos possíveis soluções, tudo sem custo para você." },
-    { q: "É muito caro resolver a situação do meu imóvel?", a: "É muito comum conseguirmos resolver a situação do seu imóvel na própria consultoria. Em muitos casos, a situação é mais simples do que você imagina. Os valores variam de acordo com o tamanho da área e a quantidade de imóveis." },
-    { q: "É muito burocrático resolver a situação do meu imóvel?", a: "Todas já sabem das burocracias que envolvem esses processos, mas nós fazemos todo o trabalho duro para você: medição, projeto, processo, protocolos, coleta de assinaturas dos vizinhos, correções e acompanhamento. Atualizamos nossos clientes a cada etapa cumprida." },
-    { q: "Demora muito tempo pra resolver?", a: "O tempo depende da característica do serviço. No entanto, temos um time preparado para dar atenção ao seu processo desde o primeiro dia, garantindo a conclusão no tempo mais rápido possível." },
-    { q: "É 100% seguro resolver com vocês?", a: "Oferecemos um serviço 100% garantido: é simples, ou executamos os serviços, ou o seu dinheiro de volta. Caso ocorra algum erro por nossa parte, assumimos a responsabilidade e arcamos com os custos necessários." },
-    { q: "O georreferenciamento é obrigatório?", a: "Sim! O georreferenciamento passou a ser obrigatório para todos os imóveis rurais do Brasil, com prazo até 2029. Ele é necessário para compra e venda, doação, inventários, desmembramentos, financiamentos e outras transações imobiliárias." },
+    { q: "Vou precisar pagar alguma coisa na consultoria?", a: "Não! O atendimento é completamente gratuito. Visitamos seu imóvel, analisamos documentações e propomos soluções, tudo sem custo para você." },
+    { q: "É muito caro resolver a situação do meu imóvel?", a: "É muito comum resolvermos na própria consultoria. Em muitos casos, a situação é mais simples do que você imagina. Os valores variam conforme tamanho da área." },
+    { q: "É muito burocrático?", a: "Nós fazemos todo o trabalho duro: medição, projeto, coleta de assinaturas dos vizinhos, protocolo em cartório, correções e acompanhamento. Atualizamos você a cada etapa." },
+    { q: "Demora muito tempo pra resolver?", a: "O tempo depende do serviço, mas temos um time que acompanha seu processo desde o primeiro dia, garantindo a conclusão no tempo mais rápido possível." },
+    { q: "É 100% seguro resolver com vocês?", a: "Oferecemos garantia total: executamos os serviços ou devolvemos seu dinheiro. Caso haja erro, assumimos a responsabilidade." },
+    { q: "O georreferenciamento é obrigatório?", a: "Sim! Obrigatório para todos os imóveis rurais do Brasil, com prazo até 2029. Necessário para compra, venda, inventários, financiamentos e outras transações." },
   ];
 
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="bg-muted py-20">
+    <section className="bg-background py-24">
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl">
-            Dúvidas <span className="text-primary">frequentes</span>
+          <span className="inline-flex items-center rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary">
+            FAQ
+          </span>
+          <h2 className="mt-4 text-4xl font-black tracking-tight text-foreground sm:text-5xl">
+            Dúvidas frequentes
           </h2>
         </div>
         <div className="mt-12 space-y-3">
           {faqs.map((faq, i) => (
-            <div key={i} className="overflow-hidden rounded-xl border bg-card">
+            <div key={i} className="group overflow-hidden rounded-2xl border bg-card transition-all hover:border-primary/20 hover:shadow-sm">
               <button
-                className="flex w-full items-center justify-between px-6 py-4 text-left"
+                className="flex w-full items-center justify-between px-6 py-5 text-left transition-colors hover:bg-muted/30"
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
               >
-                <span className="pr-4 font-semibold text-foreground">{faq.q}</span>
-                <ChevronDown
-                  className={`h-5 w-5 shrink-0 text-muted-foreground transition-transform ${openIndex === i ? "rotate-180" : ""}`}
-                />
+                <span className="pr-4 font-bold text-foreground">{faq.q}</span>
+                <div className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border transition-all ${openIndex === i ? "rotate-180 border-primary bg-primary text-primary-foreground" : "border-border text-muted-foreground"}`}>
+                  <ChevronDown className="h-4 w-4" />
+                </div>
               </button>
               {openIndex === i && (
-                <div className="border-t px-6 py-4">
-                  <p className="text-sm leading-relaxed text-muted-foreground">{faq.a}</p>
+                <div className="border-t bg-muted/20 px-6 py-5">
+                  <p className="leading-relaxed text-muted-foreground">{faq.a}</p>
                 </div>
               )}
             </div>
@@ -522,34 +595,33 @@ function FAQSection() {
   );
 }
 
+/* ─── FINAL CTA ─── */
 function CTASection() {
   return (
-    <section className="bg-primary py-20">
-      <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-extrabold text-primary-foreground sm:text-4xl">
-          Regularize seu imóvel com quem cuida de tudo para você
+    <section className="relative overflow-hidden bg-primary py-24">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.08),transparent_60%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,var(--color-galli-green)/0.1,transparent_50%)]" />
+      <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+        <h2 className="text-4xl font-black leading-tight text-primary-foreground sm:text-5xl">
+          Regularize seu imóvel com quem cuida de{" "}
+          <span className="text-galli-yellow">tudo</span> para você
         </h2>
-        <p className="mt-4 text-lg text-primary-foreground/80">
-          Atendemos produtores rurais e proprietários de imóveis no norte do Rio Grande do Sul. 
-          Agende sua consultoria gratuita e entenda a situação do seu imóvel sem pagar nada.
+        <p className="mt-6 text-lg text-primary-foreground/70">
+          Atendemos produtores rurais e proprietários no norte do Rio Grande do Sul.
         </p>
-        <div className="mt-4 flex flex-wrap justify-center gap-2 text-sm text-primary-foreground/60">
-          <span>Tapejara</span><span>•</span>
-          <span>Sertão</span><span>•</span>
-          <span>Vila Lângaro</span><span>•</span>
-          <span>Estação</span><span>•</span>
-          <span>Água Santa</span><span>•</span>
-          <span>Coxilha</span><span>•</span>
-          <span>e região</span>
+        <div className="mt-4 flex flex-wrap justify-center gap-2 text-sm text-primary-foreground/40">
+          {["Tapejara", "Sertão", "Vila Lângaro", "Estação", "Água Santa", "Coxilha", "e região"].map((c, i) => (
+            <span key={c}>{i > 0 && "•"} {c}</span>
+          ))}
         </div>
         <a
           href="https://wa.me/5554984007983?text=Gostaria%20de%20agendar%20uma%20consultoria"
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-8 inline-flex items-center gap-2 rounded-lg bg-galli-yellow px-8 py-4 text-lg font-bold text-foreground shadow-lg transition-all hover:shadow-xl"
+          className="group mt-10 inline-flex items-center gap-3 rounded-2xl bg-galli-yellow px-10 py-5 text-xl font-black text-foreground shadow-xl shadow-galli-yellow/20 transition-all hover:-translate-y-1 hover:shadow-2xl"
         >
-          Quero consultoria com especialista
-          <ArrowRight className="h-5 w-5" />
+          Quero consultoria gratuita
+          <ArrowRight className="h-6 w-6 transition-transform group-hover:translate-x-1" />
         </a>
       </div>
     </section>
