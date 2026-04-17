@@ -24,6 +24,7 @@ function HomePage() {
       <ServicesSection />
       <HowItWorksSection />
       <UrgencySection />
+      <TeamSection />
       <TestimonialsSection />
       <FAQSection />
       <CTASection />
@@ -493,6 +494,60 @@ function UrgencySection() {
           Quero consultoria com especialista
           <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
         </a>
+      </div>
+    </section>
+  );
+}
+
+/* ─── EQUIPE ─── */
+function TeamSection() {
+  const team = [
+    { name: "Fabiano Marcos Galli", role: "CEO & Fundador", photo: "https://gallitopografia.com.br/wp-content/uploads/2026/04/3.png" },
+    { name: "Talita Nunes Galli", role: "Administrativo", photo: "https://gallitopografia.com.br/wp-content/uploads/2026/04/4.png" },
+    { name: "Eduardo Cichelero", role: "Setor de Projetos", photo: "https://gallitopografia.com.br/wp-content/uploads/2026/04/2.png" },
+    { name: "Deivid Campos", role: "Técnico de Campo", photo: "https://gallitopografia.com.br/wp-content/uploads/2026/04/1.png" },
+  ];
+
+  return (
+    <section className="bg-background py-24">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="text-center">
+          <span className="inline-flex items-center rounded-full bg-galli-green/10 px-4 py-1.5 text-sm font-semibold text-galli-green">
+            Nossa Equipe
+          </span>
+          <h2 className="mt-4 text-4xl font-black tracking-tight text-foreground sm:text-5xl">
+            Conheça quem cuida do seu imóvel
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
+            Um time especializado, comprometido e pronto para garantir a regularização da sua propriedade com excelência.
+          </p>
+        </div>
+
+        <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          {team.map((member) => (
+            <div
+              key={member.name}
+              className="group relative overflow-hidden rounded-2xl border bg-card p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:border-primary/20 hover:shadow-xl"
+            >
+              <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-primary/5 to-transparent" />
+              <div className="relative mx-auto h-40 w-40 overflow-hidden rounded-full border-4 border-background shadow-lg ring-2 ring-primary/10 transition-transform duration-300 group-hover:scale-105">
+                <img
+                  src={member.photo}
+                  alt={`Foto de ${member.name}`}
+                  loading="lazy"
+                  width={320}
+                  height={320}
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              <h3 className="relative mt-6 text-lg font-bold text-foreground">{member.name}</h3>
+              <p className="relative mt-1 text-sm font-medium text-primary">{member.role}</p>
+              <div className="relative mt-4 flex justify-center">
+                <span className="h-1 w-12 rounded-full bg-gradient-to-r from-primary to-galli-green" />
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
