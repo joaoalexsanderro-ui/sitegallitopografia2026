@@ -12,7 +12,7 @@ export function Footer() {
               <img
                 src="https://gallitopografia.com.br/wp-content/uploads/2025/09/LOGO-GALLI-7.webp"
                 alt="Galli Topografia e Georreferenciamento"
-                className="h-12 w-auto bg-white p-1.5 rounded-lg"
+                className="h-20 w-auto md:h-24"
                 loading="lazy"
               />
             </div>
