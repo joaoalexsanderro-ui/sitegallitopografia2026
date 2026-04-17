@@ -8,16 +8,13 @@ export function Footer() {
       <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div>
-            <div className="flex items-center gap-3">
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary shadow-lg">
-                <span className="text-lg font-black text-primary-foreground">G</span>
-              </div>
-              <div className="flex flex-col">
-                <span className="text-xl font-black leading-tight">GALLI</span>
-                <span className="text-[10px] font-semibold uppercase tracking-[0.15em] opacity-50">
-                  Topografia &amp; Geo
-                </span>
-              </div>
+            <div className="flex items-center">
+              <img
+                src="https://gallitopografia.com.br/wp-content/uploads/2025/09/LOGO-GALLI-7.webp"
+                alt="Galli Topografia e Georreferenciamento"
+                className="h-12 w-auto bg-white p-1.5 rounded-lg"
+                loading="lazy"
+              />
             </div>
             <p className="mt-5 text-sm leading-relaxed opacity-60">
               Especialistas em regularização de imóveis e georreferenciamento junto ao INCRA no norte do RS.
