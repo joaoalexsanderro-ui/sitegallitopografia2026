@@ -16,16 +16,13 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-border/50 bg-card/80 backdrop-blur-xl">
       <div className="mx-auto flex h-18 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link to="/" className="group flex items-center gap-3">
-          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-primary/80 shadow-lg shadow-primary/20 transition-shadow group-hover:shadow-primary/30">
-            <span className="text-lg font-black text-primary-foreground">G</span>
-          </div>
-          <div className="flex flex-col">
-            <span className="text-xl font-black leading-tight tracking-tight text-primary">GALLI</span>
-            <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-muted-foreground">
-              Topografia &amp; Geo
-            </span>
-          </div>
+        <Link to="/" className="group flex items-center">
+          <img
+            src="https://gallitopografia.com.br/wp-content/uploads/2025/09/LOGO-GALLI-7.webp"
+            alt="Galli Topografia e Georreferenciamento"
+            className="h-12 w-auto"
+            loading="eager"
+          />
         </Link>
 
         <nav className="hidden items-center gap-1 md:flex">
