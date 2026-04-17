@@ -15,12 +15,12 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/50 bg-card/80 backdrop-blur-xl">
-      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 md:h-24">
-        <Link to="/" className="group flex items-center">
+      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <Link to="/" className="group flex items-center -my-4">
           <img
             src="https://gallitopografia.com.br/wp-content/uploads/2025/09/LOGO-GALLI-7.webp"
             alt="Galli Topografia e Georreferenciamento"
-            className="h-16 w-auto md:h-20"
+            className="h-28 w-auto md:h-32"
             loading="eager"
           />
         </Link>
