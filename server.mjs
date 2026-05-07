@@ -12,7 +12,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Import the server build
-const serverBuild = await import('./dist/server/server.js');
+const serverBuildPath = path.join(__dirname, 'dist', 'server', 'server.js');
+console.log(`Loading server build from: ${serverBuildPath}`);
+const serverBuild = await import(serverBuildPath);
 const handler = serverBuild.default.fetch;
 
 const app = createApp();
@@ -52,18 +54,22 @@ app.use(
     // Support root paths for common assets
     const filePath = path.join(__dirname, 'dist', 'client', pathname);
     
+    console.log(`Checking for static file: ${pathname} -> ${filePath}`);
+
     try {
       if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
         const ext = path.extname(filePath);
         const contentType = getMimeType(ext);
         
+        console.log(`Serving static file: ${pathname} as ${contentType}`);
+
         event.node.res.setHeader('Content-Type', contentType);
         event.node.res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
         
         return fs.readFileSync(filePath);
       }
     } catch (e) {
-      // Ignore
+      console.error(`Error serving static file ${pathname}:`, e);
     }
   })
 );
@@ -77,7 +83,7 @@ app.use(
 
     // If it looks like a static asset that wasn't caught by the static server, 
     // it's likely a 404 or something we shouldn't SSR.
-    if (url.pathname.startsWith('/assets/') || url.pathname.includes('.')) {
+    if (url.pathname.includes('.') && !url.pathname.endsWith('.html')) {
       return;
     }
 
@@ -97,7 +103,9 @@ app.use(
         body: ['GET', 'HEAD'].includes(event.node.req.method) ? null : event.node.req
       });
 
+      console.log(`Forwarding to SSR handler: ${url.toString()}`);
       const response = await handler(request);
+      console.log(`SSR Response status: ${response.status}`);
       
       response.headers.forEach((value, key) => {
         event.node.res.setHeader(key, value);
@@ -110,12 +118,14 @@ app.use(
     } catch (error) {
       console.error('SSR Error:', error);
       event.node.res.statusCode = 500;
-      return 'Internal Server Error';
+      return `Internal Server Error: ${error.message}\n${error.stack}`;
     }
   })
 );
 
 const port = process.env.PORT || 3000;
-createServer(toNodeListener(app)).listen(port, '0.0.0.0', () => {
-  console.log('Server listening on http://0.0.0.0:' + port);
+const host = '0.0.0.0';
+
+createServer(toNodeListener(app)).listen(port, host, () => {
+  console.log(`Server listening on http://${host}:${port}`);
 });
