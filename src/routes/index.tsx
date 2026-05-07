@@ -35,7 +35,7 @@ function HomePage() {
 /* ─── HERO ─── */
 function HeroSection() {
   return (
-    <section className="relative min-h-[90vh] overflow-hidden">
+    <section className="relative min-h-[95vh] overflow-hidden flex items-center">
       {/* Background image */}
       <img
         src={heroBg}
@@ -47,14 +47,14 @@ function HeroSection() {
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/60" />
 
-      <div className="relative mx-auto flex min-h-[90vh] max-w-7xl items-center px-4 py-20 sm:px-6 lg:px-8">
+      <div className="relative mx-auto flex w-full max-w-7xl items-center px-4 py-32 sm:px-6 lg:px-8">
         <div className="max-w-2xl">
           <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-bold tracking-widest text-white uppercase backdrop-blur-sm">
             <span className="h-2 w-2 rounded-full bg-galli-green" />
             Parceira do Produtor Rural
           </span>
 
-          <h1 className="mt-8 text-5xl font-black leading-tight tracking-tight text-white sm:text-6xl lg:text-7xl">
+          <h1 className="mt-8 text-5xl font-black leading-[1.1] tracking-tight text-white sm:text-6xl lg:text-7xl xl:text-8xl">
             Consultoria{" "}
             <span className="relative inline-block text-galli-yellow">
               gratuita
@@ -82,7 +82,7 @@ function HeroSection() {
               href="https://wa.me/5554984007983?text=Gostaria%20de%20agendar%20uma%20consultoria"
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center justify-center gap-2.5 rounded-xl bg-galli-green px-8 py-4 text-base font-bold text-primary-foreground shadow-[0_8px_30px_-4px] shadow-galli-green/40 transition-all hover:-translate-y-0.5 hover:shadow-[0_12px_40px_-4px] hover:shadow-galli-green/50"
+              className="group inline-flex items-center justify-center gap-3 rounded-2xl bg-[#29ac54] px-10 py-5 text-lg font-black text-white shadow-[0_20px_50px_rgba(41,172,84,0.3)] transition-all hover:-translate-y-1 hover:shadow-[0_25px_60px_rgba(41,172,84,0.4)] active:scale-95"
             >
               <Phone className="h-5 w-5" />
               Quero consultoria gratuita
