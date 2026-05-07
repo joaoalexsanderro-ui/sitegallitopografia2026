@@ -454,10 +454,10 @@ function HowItWorksSection() {
 /* ─── URGENCY ─── */
 function UrgencySection() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-r from-galli-yellow via-galli-yellow to-galli-yellow/90 py-20">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_50%,rgba(255,255,255,0.15),transparent_60%)]" />
+    <section className="relative overflow-hidden bg-white py-20 border-y border-border/50">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_50%,rgba(0,0,0,0.02),transparent_60%)]" />
       <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-foreground/10 backdrop-blur-sm">
+        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-black/5">
           <Clock className="h-8 w-8 text-foreground" />
         </div>
         <h2 className="mt-6 text-4xl font-black text-foreground sm:text-5xl">
@@ -474,7 +474,7 @@ function UrgencySection() {
           href="https://wa.me/5554984007983?text=Gostaria%20de%20agendar%20uma%20consultoria"
           target="_blank"
           rel="noopener noreferrer"
-          className="group mt-8 inline-flex items-center gap-2 rounded-xl bg-primary px-8 py-4 text-lg font-bold text-primary-foreground shadow-xl shadow-primary/30 transition-all hover:-translate-y-1 hover:shadow-2xl"
+          className="group mt-8 inline-flex items-center gap-2 rounded-xl bg-black px-8 py-4 text-lg font-bold text-white shadow-xl shadow-black/10 transition-all hover:-translate-y-1 hover:shadow-2xl"
         >
           Quero consultoria com especialista
           <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
