@@ -12,7 +12,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Import the server build
-const serverBuild = await import('./dist/server/server.js');
+const serverBuildPath = path.join(__dirname, 'dist', 'server', 'server.js');
+console.log(`Loading server build from: ${serverBuildPath}`);
+const serverBuild = await import(serverBuildPath);
 const handler = serverBuild.default.fetch;
 
 const app = createApp();
