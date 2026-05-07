@@ -45,16 +45,16 @@ function HeroSection() {
         className="absolute inset-0 h-full w-full object-cover"
       />
       {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/85 to-primary/60" />
+      <div className="absolute inset-0 bg-black/60" />
 
       <div className="relative mx-auto flex min-h-[90vh] max-w-7xl items-center px-4 py-20 sm:px-6 lg:px-8">
         <div className="max-w-2xl">
-          <span className="inline-flex animate-pulse items-center gap-2 rounded-full border border-galli-green/40 bg-galli-green/15 px-5 py-2 text-sm font-semibold text-galli-green backdrop-blur-sm">
+          <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-bold tracking-widest text-white uppercase backdrop-blur-sm">
             <span className="h-2 w-2 rounded-full bg-galli-green" />
             Parceira do Produtor Rural
           </span>
 
-          <h1 className="mt-8 text-5xl font-black leading-[1.1] tracking-tight text-primary-foreground sm:text-6xl lg:text-7xl">
+          <h1 className="mt-8 text-5xl font-black leading-tight tracking-tight text-white sm:text-6xl lg:text-7xl">
             Consultoria{" "}
             <span className="relative inline-block text-galli-yellow">
               gratuita
@@ -65,11 +65,11 @@ function HeroSection() {
             para regularizar seu imóvel
           </h1>
 
-          <p className="mt-8 text-lg leading-relaxed text-primary-foreground/75 sm:text-xl">
+          <p className="mt-8 text-lg leading-relaxed text-white/80 sm:text-xl">
             Cuidamos de <strong className="text-primary-foreground">todo o processo</strong> — da medição ao registro em cartório — para que você não se preocupe com burocracia.
           </p>
 
-          <div className="mt-8 flex flex-col gap-3 text-sm text-primary-foreground/70 sm:flex-row sm:gap-6">
+          <div className="mt-8 flex flex-col gap-3 text-sm text-white/70 sm:flex-row sm:gap-6">
             {["Análise gratuita de documentação", "Processo completo até o cartório", "Garantia 100%"].map((t) => (
               <span key={t} className="flex items-center gap-2">
                 <CheckCircle className="h-4 w-4 shrink-0 text-galli-green" /> {t}
@@ -91,10 +91,10 @@ function HeroSection() {
           </div>
 
           {/* Social proof */}
-          <div className="mt-10 flex items-center gap-4">
+          <div className="mt-12 flex items-center gap-4">
             <div className="flex -space-x-3">
               {[1, 2, 3, 4].map((i) => (
-                <div key={i} className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-primary bg-primary-foreground/20 text-xs font-bold text-primary-foreground backdrop-blur-sm">
+                <div key={i} className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-white/20 bg-white/10 text-xs font-bold text-white backdrop-blur-md">
                   {["JR", "MS", "AL", "PF"][i - 1]}
                 </div>
               ))}
@@ -102,23 +102,23 @@ function HeroSection() {
             <div>
               <div className="flex gap-0.5">
                 {[...Array(5)].map((_, j) => (
-                  <Star key={j} className="h-4 w-4 fill-galli-yellow text-galli-yellow" />
+                  <Star key={j} className="h-4 w-4 fill-[#fcb52f] text-[#fcb52f]" />
                 ))}
               </div>
-              <p className="text-xs text-primary-foreground/60">Centenas de clientes satisfeitos</p>
+              <p className="text-sm font-medium text-white/80">Centenas de clientes satisfeitos</p>
             </div>
           </div>
         </div>
 
         {/* Right floating cards */}
         <div className="absolute bottom-12 right-8 hidden flex-col gap-4 lg:flex">
-          <div className="animate-[fadeInUp_0.6s_ease-out] rounded-2xl border border-primary-foreground/10 bg-primary-foreground/10 p-5 backdrop-blur-md">
-            <p className="text-4xl font-black text-galli-yellow">+4 Anos</p>
-            <p className="mt-1 text-sm text-primary-foreground/70">de experiência em topografia</p>
+          <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+            <p className="text-4xl font-black text-white">+4 Anos</p>
+            <p className="mt-1 text-sm font-medium text-white/60">de experiência</p>
           </div>
-          <div className="animate-[fadeInUp_0.8s_ease-out] rounded-2xl border border-primary-foreground/10 bg-galli-green/20 p-5 backdrop-blur-md">
-            <p className="text-4xl font-black text-galli-green">100%</p>
-            <p className="mt-1 text-sm text-primary-foreground/70">Garantia de satisfação</p>
+          <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
+            <p className="text-4xl font-black text-[#29ac54]">100%</p>
+            <p className="mt-1 text-sm font-medium text-white/60">Garantia total</p>
           </div>
         </div>
       </div>
