@@ -4,8 +4,6 @@ import {
   eventHandler,
   toNodeListener,
 } from 'h3';
-import { createMiddleware } from '@tanstack/react-start-server';
-import { getManifest } from '@tanstack/react-start/server';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import fs from 'node:fs';
@@ -14,7 +12,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Import the server build
-const serverBuild = await import('./dist/server/index.mjs');
+const serverBuild = await import('./dist/server/server.js');
+const handler = serverBuild.default.fetch;
 
 const app = createApp();
 
@@ -34,6 +33,9 @@ const getMimeType = (ext) => {
     '.json': 'application/json',
     '.woff': 'font/woff',
     '.woff2': 'font/woff2',
+    '.ttf': 'font/ttf',
+    '.otf': 'font/otf',
+    '.eot': 'application/vnd.ms-fontobject',
   };
   return mimes[ext.toLowerCase()] || 'application/octet-stream';
 };
@@ -41,15 +43,11 @@ const getMimeType = (ext) => {
 // Serve static files from dist/client
 app.use(
   eventHandler(async (event) => {
-    const url = new URL(event.node.req.url, `http://${event.node.req.headers.host || 'localhost'}`);
+    const host = event.node.req.headers.host || 'localhost';
+    const url = new URL(event.node.req.url, 'http://' + host);
     let pathname = url.pathname;
     
-    // Safety check for directory traversal
-    if (pathname.includes('..')) {
-      return;
-    }
-
-    // Default to index.html for root if not handled by SSR (though SSR should handle it)
+    if (pathname.includes('..')) return;
     if (pathname === '/') return;
 
     const filePath = path.join(__dirname, 'dist', 'client', pathname);
@@ -65,28 +63,53 @@ app.use(
         return fs.readFileSync(filePath);
       }
     } catch (e) {
-      // Ignore errors
+      // Ignore
     }
   })
 );
 
-// TanStack Start SSR handler
-const ssrHandler = createMiddleware({
-  getManifest,
-  serverBuild,
-});
-
+// SSR handler
 app.use(
   eventHandler(async (event) => {
-    // Let the SSR handler handle the request
-    return ssrHandler(event);
+    try {
+      const host = event.node.req.headers.host || 'localhost';
+      const url = new URL(event.node.req.url, 'http://' + host);
+      
+      const requestHeaders = new Headers();
+      Object.entries(event.node.req.headers).forEach(([key, value]) => {
+        if (Array.isArray(value)) {
+          value.forEach(v => requestHeaders.append(key, v));
+        } else if (value) {
+          requestHeaders.set(key, value);
+        }
+      });
+
+      const request = new Request(url.toString(), {
+        method: event.node.req.method,
+        headers: requestHeaders,
+        // For GET/HEAD, body must be null
+        body: ['GET', 'HEAD'].includes(event.node.req.method) ? null : event.node.req
+      });
+
+      const response = await handler(request);
+      
+      response.headers.forEach((value, key) => {
+        event.node.res.setHeader(key, value);
+      });
+      
+      event.node.res.statusCode = response.status;
+      
+      const body = await response.text();
+      return body;
+    } catch (error) {
+      console.error('SSR Error:', error);
+      event.node.res.statusCode = 500;
+      return 'Internal Server Error';
+    }
   })
 );
 
 const port = process.env.PORT || 3000;
 createServer(toNodeListener(app)).listen(port, '0.0.0.0', () => {
-  console.log(`Server listening on http://0.0.0.0:${port}`);
+  console.log('Server listening on http://0.0.0.0:' + port);
 });
-
-
-
