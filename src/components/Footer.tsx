@@ -37,16 +37,16 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="mb-5 text-xs font-bold uppercase tracking-widest opacity-40">Contato</h4>
+            <h4 className="mb-5 text-xs font-bold uppercase tracking-widest text-primary">Contato</h4>
             <div className="flex flex-col gap-4">
-              <a href="https://wa.me/5554984007983" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2.5 text-sm opacity-60 transition-opacity hover:opacity-100">
-                <Phone className="h-4 w-4 shrink-0" /> (54) 98400-7983
+              <a href="https://wa.me/5554984007983" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2.5 text-sm text-muted-foreground transition-colors hover:text-primary">
+                <Phone className="h-4 w-4 shrink-0 text-primary" /> (54) 98400-7983
               </a>
-              <a href="https://www.instagram.com/gallitopografia/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2.5 text-sm opacity-60 transition-opacity hover:opacity-100">
-                <Instagram className="h-4 w-4 shrink-0" /> @gallitopografia
+              <a href="https://www.instagram.com/gallitopografia/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2.5 text-sm text-muted-foreground transition-colors hover:text-primary">
+                <Instagram className="h-4 w-4 shrink-0 text-primary" /> @gallitopografia
               </a>
-              <div className="flex items-start gap-2.5 text-sm opacity-60">
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0" />
+              <div className="flex items-start gap-2.5 text-sm text-muted-foreground">
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                 <span>Av. 7 de Setembro, 1952, sala 2<br />Tapejara/RS</span>
               </div>
             </div>
