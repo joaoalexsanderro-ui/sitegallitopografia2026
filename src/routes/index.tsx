@@ -150,7 +150,7 @@ function StatsSection() {
     { value: "+5", suffix: " Anos", label: "de experiência", color: "text-primary" },
     { value: "100", suffix: "%", label: "Garantia de serviço", color: "text-galli-green" },
     { value: "+5.000", suffix: " ha", label: "regularizados", color: "text-galli-yellow" },
-    { value: "~85", suffix: "%", label: "dos imóveis rurais precisam de GEO", color: "text-primary" },
+    { value: "80", suffix: "%", label: "dos imóveis precisam de regularização", color: "text-primary" },
   ];
 
   return (
@@ -293,8 +293,8 @@ function GeoSection() {
           <img src={geoImg} alt="Vista aérea de propriedade rural georreferenciada" loading="lazy" width={1280} height={720} className="absolute inset-0 h-full w-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-r from-transparent to-primary/20 lg:bg-gradient-to-l lg:from-primary/30 lg:to-transparent" />
           <div className="absolute bottom-6 left-6 rounded-xl bg-primary/90 p-5 backdrop-blur-sm">
-            <p className="text-3xl font-black text-galli-yellow">~85%</p>
-            <p className="text-sm text-primary-foreground/80">dos imóveis ainda não fizeram GEO</p>
+            <p className="text-3xl font-black text-galli-yellow">80%</p>
+            <p className="text-sm text-primary-foreground/80">dos imóveis precisam de regularização</p>
           </div>
         </div>
 
