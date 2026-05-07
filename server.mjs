@@ -94,7 +94,15 @@ app.use(
     try {
       const host = event.node.req.headers.host || 'localhost';
       const protocol = event.node.req.headers['x-forwarded-proto'] || 'http';
+      const prefix = event.node.req.headers['x-forwarded-prefix'] || '';
+      
       const fullUrl = new URL(event.node.req.url, `${protocol}://${host}`);
+      
+      // If a prefix is provided (e.g., when running in a subdirectory),
+      // ensure the URL passed to the router includes it if not already present.
+      if (prefix && !fullUrl.pathname.startsWith(prefix)) {
+        fullUrl.pathname = path.join(prefix, fullUrl.pathname).replace(/\/+/g, '/');
+      }
 
       const requestHeaders = new Headers();
       Object.entries(event.node.req.headers).forEach(([key, value]) => {
