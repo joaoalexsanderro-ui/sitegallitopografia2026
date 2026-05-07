@@ -497,9 +497,6 @@ function TeamSection() {
     <section className="bg-background py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <span className="inline-flex items-center rounded-full bg-galli-green/10 px-4 py-1.5 text-sm font-semibold text-galli-green">
-            Nossa Equipe
-          </span>
           <h2 className="mt-4 text-4xl font-black tracking-tight text-foreground sm:text-5xl">
             Conheça quem cuida do seu imóvel
           </h2>
