@@ -341,11 +341,12 @@ function GeoSection() {
 /* ─── SERVICES ─── */
 function ServicesSection() {
   const services = [
-    { icon: MapPin, title: "Georreferenciamento", description: "Obrigatório para todos os imóveis rurais. Realizamos o levantamento com precisão milimétrica e certificação junto ao INCRA.", badge: "Principal" },
-    { icon: FileCheck, title: "Regularização de Imóveis", description: "Regularizamos a documentação do seu imóvel rural ou urbano para venda, inventário, financiamento ou sucessão familiar.", badge: null },
-    { icon: Ruler, title: "Levantamento Topográfico", description: "Levantamentos topográficos de áreas rurais e urbanas com equipamentos de alta precisão.", badge: null },
-    { icon: Target, title: "Locação de Obras e Terraplenagem", description: "Precisão máxima na locação de estacas, pilares e acompanhamento de volumes de terraplenagem para sua obra.", badge: null },
-    { icon: FileCheck, title: "Desmembramento e Loteamento", description: "Projetos completos para desmembramento de áreas rurais e criação de loteamentos urbanos com toda aprovação legal.", badge: null },
+    { icon: MapPin, title: "Georreferenciamento", description: "Obrigatório para imóveis rurais. Realizamos levantamento com alta precisão e certificação junto ao INCRA, garantindo segurança jurídica e regularização completa.", badge: "Principal" },
+    { icon: FileCheck, title: "Regularização de Imóveis", description: "Cuidamos de toda a documentação do imóvel rural ou urbano, incluindo CAR, CCIR, inventários, retificações e acompanhamento em cartório.", badge: null },
+    { icon: Ruler, title: "Levantamento Topográfico", description: "Medições precisas para áreas rurais e urbanas com equipamentos de alta tecnologia, garantindo agilidade e confiabilidade nos projetos.", badge: null },
+    { icon: Target, title: "Locação de Obras e Terraplenagem", description: "Locação de estacas, pilares e acompanhamento técnico para obras e movimentação de terra com máxima precisão.", badge: null },
+    { icon: FileCheck, title: "Desmembramento e Loteamento", description: "Projetos completos para divisão de áreas rurais e urbanas, criação de loteamentos e aprovação junto aos órgãos responsáveis.", badge: null },
+    { icon: MapPin, title: "Mapeamento Aéreo com Drone", description: "Captura aérea de alta precisão para acompanhamento de áreas rurais e urbanas, geração de mapas, ortofotos e análise detalhada do terreno.", badge: null },
   ];
 
   return (
