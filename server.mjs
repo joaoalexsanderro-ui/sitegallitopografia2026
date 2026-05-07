@@ -120,6 +120,8 @@ app.use(
 );
 
 const port = process.env.PORT || 3000;
-createServer(toNodeListener(app)).listen(port, '0.0.0.0', () => {
-  console.log('Server listening on http://0.0.0.0:' + port);
+const host = '0.0.0.0';
+
+createServer(toNodeListener(app)).listen(port, host, () => {
+  console.log(`Server listening on http://${host}:${port}`);
 });
