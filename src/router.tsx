@@ -55,6 +55,7 @@ function DefaultErrorComponent({ error, reset }: { error: Error; reset: () => vo
 }
 
 export const getRouter = () => {
+  console.log("Initializing router...");
   const router = createRouter({
     routeTree,
     context: {},
