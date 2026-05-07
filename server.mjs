@@ -81,7 +81,7 @@ app.use(
 
     // If it looks like a static asset that wasn't caught by the static server, 
     // it's likely a 404 or something we shouldn't SSR.
-    if (url.pathname.startsWith('/assets/') || url.pathname.includes('.')) {
+    if (url.pathname.includes('.') && !url.pathname.endsWith('.html')) {
       return;
     }
 
