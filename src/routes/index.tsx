@@ -126,18 +126,34 @@ function HeroSection() {
 
 /* ─── LOGO BAR ─── */
 function LogoBar() {
+  const cities = [
+    "Ibiaçá", "Sananduva", "Getúlio Vargas", "Passo Fundo", "Mato Castelhano",
+    "Ciríaco", "Capão Bonito do Sul", "Santo Expedito do Sul", "Tupanci do Sul",
+    "Ibiraiaras", "Muitos Capões", "Vacaria", "Lagoa Vermelha", "Marau",
+    "Casca", "Paraí", "Nova Araçá", "Serafina Corrêa", "São José do Ouro",
+    "São João da Urtiga", "Paim Filho", "Maximiliano de Almeida", "Erechim",
+    "Charrua", "Floriano Peixoto", "Vila Maria", "Tapejara", "Sertão",
+    "Vila Lângaro", "Estação", "Água Santa", "Coxilha", "Esmeralda", "Pinhal da Serra"
+  ];
+
   return (
-    <section className="overflow-hidden border-b bg-background py-6">
+    <section className="overflow-hidden border-b bg-background py-8">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <p className="mb-4 text-center text-xs font-semibold uppercase tracking-widest text-muted-foreground/60">
+        <p className="mb-6 text-center text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground/50">
           Atuação no Norte do Rio Grande do Sul
         </p>
-        <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-sm font-medium text-muted-foreground">
-          {["Tapejara", "Sertão", "Vila Lângaro", "Estação", "Água Santa", "Coxilha", "Esmeralda", "Pinhal da Serra"].map((c) => (
-            <span key={c} className="flex items-center gap-1.5 whitespace-nowrap">
-              <MapPin className="h-3.5 w-3.5 text-primary/60" />{c}
-            </span>
-          ))}
+        <div className="relative flex overflow-hidden">
+          <div className="flex animate-infinite-scroll gap-12 whitespace-nowrap py-2">
+            {[...cities, ...cities].map((c, i) => (
+              <span key={`${c}-${i}`} className="flex items-center gap-2 text-sm font-semibold text-muted-foreground/80 transition-colors hover:text-primary">
+                <MapPin className="h-4 w-4 text-primary/40" />
+                {c}
+              </span>
+            ))}
+          </div>
+          {/* Gradients for smooth fade */}
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-background to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-background to-transparent" />
         </div>
       </div>
     </section>

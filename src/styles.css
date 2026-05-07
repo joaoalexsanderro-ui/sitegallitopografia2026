@@ -46,6 +46,12 @@
   --color-sidebar-ring: var(--sidebar-ring);
   --color-galli-green: var(--galli-green);
   --color-galli-yellow: var(--galli-yellow);
+  --animate-infinite-scroll: infinite-scroll 40s linear infinite;
+
+  @keyframes infinite-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
 }
 
 :root {
