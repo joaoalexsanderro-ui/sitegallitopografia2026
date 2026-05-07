@@ -344,6 +344,7 @@ function ServicesSection() {
     { icon: MapPin, title: "Georreferenciamento", description: "Georreferenciamento de imóveis rurais junto ao INCRA com certificação oficial. Todo o processo até o registro.", badge: "Principal" },
     { icon: FileCheck, title: "Regularização de Imóveis", description: "Da medição ao registro em cartório — CAR, CCIR, coleta de assinaturas e acompanhamento completo.", badge: null },
     { icon: Ruler, title: "Levantamento Topográfico", description: "Levantamentos topográficos de áreas rurais e urbanas com equipamentos de alta precisão.", badge: null },
+    { icon: FileCheck, title: "Desmembramento e Loteamento", description: "Projetos completos para desmembramento de áreas rurais e criação de loteamentos urbanos com toda aprovação legal.", badge: null },
   ];
 
   return (
@@ -357,7 +358,7 @@ function ServicesSection() {
             Especialistas em regularização de imóveis e georreferenciamento junto ao INCRA.
           </p>
         </div>
-        <div className="mt-16 grid gap-8 sm:grid-cols-3">
+        <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {services.map((s) => (
             <div key={s.title} className="group relative overflow-hidden rounded-3xl border bg-card p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
               {s.badge && (
