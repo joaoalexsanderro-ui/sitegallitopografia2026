@@ -3,7 +3,6 @@ import {
   createApp,
   eventHandler,
   toNodeListener,
-  fromNodeRequest,
 } from 'h3';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -12,7 +11,7 @@ import fs from 'node:fs';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Import the server build (default export is an object with a fetch method)
+// Import the server build
 const serverBuild = await import('./dist/server/server.js');
 const handler = serverBuild.default.fetch;
 
@@ -48,12 +47,7 @@ app.use(
     const url = new URL(event.node.req.url, 'http://' + host);
     let pathname = url.pathname;
     
-    // Safety check for directory traversal
-    if (pathname.includes('..')) {
-      return;
-    }
-
-    // SSR handles root and other pages
+    if (pathname.includes('..')) return;
     if (pathname === '/') return;
 
     const filePath = path.join(__dirname, 'dist', 'client', pathname);
@@ -69,7 +63,7 @@ app.use(
         return fs.readFileSync(filePath);
       }
     } catch (e) {
-      // Ignore errors
+      // Ignore
     }
   })
 );
@@ -78,17 +72,32 @@ app.use(
 app.use(
   eventHandler(async (event) => {
     try {
-      // Convert Node.js request to Web Request for TanStack Start
-      const request = fromNodeRequest(event.node.req);
+      const host = event.node.req.headers.host || 'localhost';
+      const url = new URL(event.node.req.url, 'http://' + host);
+      
+      const requestHeaders = new Headers();
+      Object.entries(event.node.req.headers).forEach(([key, value]) => {
+        if (Array.isArray(value)) {
+          value.forEach(v => requestHeaders.append(key, v));
+        } else if (value) {
+          requestHeaders.set(key, value);
+        }
+      });
+
+      const request = new Request(url.toString(), {
+        method: event.node.req.method,
+        headers: requestHeaders,
+        // For GET/HEAD, body must be null
+        body: ['GET', 'HEAD'].includes(event.node.req.method) ? null : event.node.req
+      });
+
       const response = await handler(request);
       
-      // Copy headers from Web Response to Node.js response
       response.headers.forEach((value, key) => {
         event.node.res.setHeader(key, value);
       });
       
       event.node.res.statusCode = response.status;
-      event.node.res.statusMessage = response.statusText;
       
       const body = await response.text();
       return body;
