@@ -350,7 +350,7 @@ function ServicesSection() {
   ];
 
   return (
-    <section className="bg-muted/50 py-24">
+    <section className="bg-white py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <h2 className="mt-4 text-4xl font-black tracking-tight text-foreground sm:text-5xl">
