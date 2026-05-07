@@ -53,8 +53,8 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="mb-5 text-xs font-bold uppercase tracking-widest opacity-40">Consultoria Gratuita</h4>
-            <p className="mb-5 text-sm opacity-60">
+            <h4 className="mb-5 text-xs font-bold uppercase tracking-widest text-primary">Consultoria Gratuita</h4>
+            <p className="mb-5 text-sm text-muted-foreground">
               Agende sem custo e resolva as questões do seu imóvel com um especialista.
             </p>
             <a
