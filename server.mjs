@@ -44,7 +44,7 @@ const getMimeType = (ext) => {
 // Serve static files from dist/client
 app.use(
   eventHandler(async (event) => {
-    const url = new URL(event.node.req.url, \`http://\${event.node.req.headers.host || 'localhost'}\`);
+    const url = new URL(event.node.req.url, 'http://' + (event.node.req.headers.host || 'localhost'));
     let pathname = url.pathname;
     
     // Safety check for directory traversal
