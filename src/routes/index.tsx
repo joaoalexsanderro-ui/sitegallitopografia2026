@@ -189,7 +189,7 @@ function ForWhoSection() {
             Para quem é a Galli?
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-            Para produtores rurais e proprietários que buscam segurança e tranquilidade na regularização de suas propriedades.
+            Para proprietários de imóveis rurais e urbanos que buscam segurança e tranquilidade na regularização de suas propriedades.
           </p>
         </div>
         <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
