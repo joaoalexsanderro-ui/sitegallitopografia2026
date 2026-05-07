@@ -49,10 +49,6 @@ function HeroSection() {
 
       <div className="relative mx-auto flex w-full max-w-7xl items-center px-4 py-32 sm:px-6 lg:px-8">
         <div className="max-w-2xl">
-          <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-bold tracking-widest text-white uppercase backdrop-blur-sm">
-            <span className="h-2 w-2 rounded-full bg-galli-green" />
-            Parceira do Produtor Rural
-          </span>
 
           <h1 className="mt-8 text-5xl font-black leading-[1.1] tracking-tight text-white sm:text-6xl lg:text-7xl xl:text-8xl">
             Consultoria{" "}
