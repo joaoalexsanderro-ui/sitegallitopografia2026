@@ -113,20 +113,23 @@ app.use(
         duplex: 'half',
       });
 
+      console.log(`Handling SSR request for: ${url.pathname}`);
       const response = await handler(request);
+      console.log(`SSR Response status: ${response.status}`);
 
       response.headers.forEach((value, key) => {
         event.node.res.setHeader(key, value);
       });
 
       event.node.res.statusCode = response.status;
-      return await response.text();
+      const responseText = await response.text();
+      return responseText;
     } catch (error) {
-      console.error('SSR Error:', error);
+      console.error('SSR Error detailed:', error);
       return createError({
         statusCode: 500,
         statusMessage: 'Internal Server Error',
-        data: error.stack,
+        data: error.message + '\n' + error.stack,
       });
     }
   })
