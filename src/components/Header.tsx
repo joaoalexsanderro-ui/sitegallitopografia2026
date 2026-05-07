@@ -7,11 +7,11 @@ export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const navLinks = [
-    { to: "/", label: "Home" },
-    { to: "/servicos", label: "Serviços" },
-    { to: "/como-funciona", label: "Como Funciona" },
-    { to: "/faq", label: "FAQ" },
-    { to: "/contato", label: "Contato" },
+    { to: "/#home", label: "Home" },
+    { to: "/#servicos", label: "Serviços" },
+    { to: "/#como-funciona", label: "Como Funciona" },
+    { to: "/#faq", label: "FAQ" },
+    { to: "/#contato", label: "Contato" },
   ] as const;
 
   return (

@@ -25,11 +25,11 @@ export function Footer() {
             <h4 className="mb-5 text-xs font-bold uppercase tracking-widest text-primary">Navegação</h4>
             <nav className="flex flex-col gap-3">
               {[
-                { to: "/", label: "Home" },
-                { to: "/servicos", label: "Serviços" },
-                { to: "/como-funciona", label: "Como Funciona" },
-                { to: "/faq", label: "FAQ" },
-                { to: "/contato", label: "Contato" },
+                { to: "/#home", label: "Home" },
+                { to: "/#servicos", label: "Serviços" },
+                { to: "/#como-funciona", label: "Como Funciona" },
+                { to: "/#faq", label: "FAQ" },
+                { to: "/#contato", label: "Contato" },
               ].map((l) => (
                 <Link key={l.to} to={l.to as any} className="text-sm text-muted-foreground transition-colors hover:text-primary">{l.label}</Link>
               ))}
