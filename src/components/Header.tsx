@@ -15,13 +15,13 @@ export function Header() {
   ] as const;
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-[#2c67a4]! backdrop-blur-xl" style={{ backgroundColor: '#2c67a4' }}>
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-[#2c67a4]! backdrop-blur-xl" style={{ backgroundColor: '#2c67a4', minHeight: '80px' }}>
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link to="/" className="group flex items-center -my-4">
+        <Link to="/" className="group flex items-center">
           <img
             src="https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1778159686833_r0yhpr_LOGO_2_HORIZONTAL_GALLI_topografia_e_georreferenciamento.png"
             alt="Galli Topografia e Georreferenciamento"
-            className="h-28 w-auto md:h-32 object-contain rendering-pixelated"
+            className="h-20 w-auto md:h-24 object-contain"
             style={{ imageRendering: 'auto' }}
             loading="eager"
           />
