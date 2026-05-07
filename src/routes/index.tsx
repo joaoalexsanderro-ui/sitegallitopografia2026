@@ -149,7 +149,7 @@ function StatsSection() {
   const stats = [
     { value: "+5", suffix: " Anos", label: "de experiência", color: "text-primary" },
     { value: "100", suffix: "%", label: "Garantia de serviço", color: "text-galli-green" },
-    { value: "Centenas", suffix: "", label: "de clientes atendidos", color: "text-galli-yellow" },
+    { value: "+5.000", suffix: " ha", label: "regularizados", color: "text-galli-yellow" },
     { value: "~85", suffix: "%", label: "dos imóveis rurais precisam de GEO", color: "text-primary" },
   ];
 
