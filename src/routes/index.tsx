@@ -558,43 +558,43 @@ function TeamSection() {
 /* ─── TESTIMONIALS ─── */
 function TestimonialsSection() {
   const testimonials = [
-    { name: "Junior Fontana", text: "Atendimento diferenciado e de extrema qualidade!", image: "https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1778163906908_ytd9ln_image.png" },
-    { name: "Deni Lângaro", text: "Excelente atendimento, competência e agilidade. Fabiano excelente profissional!!", image: "https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1778163906908_ytd9ln_image.png" },
-    { name: "Sandro Vicentini", text: "Serviço de muita qualidade e confiança. Recomendamos.", image: "https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1778163906908_ytd9ln_image.png" },
-    { name: "Alini Sbeghen", text: "Empresa muito séria e comprometida com o cliente. Recomendo!", image: "https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1778163906908_ytd9ln_image.png" },
-    { name: "Maikel de Oliveira", text: "Atendimento nota 10, resolveram meu problema com agilidade.", image: "https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1778163906908_ytd9ln_image.png" },
-    { name: "Igor Dall Olivo", text: "Profissionais qualificados e serviço de primeira linha.", image: "https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1778163906908_ytd9ln_image.png" },
+    { name: "Érica Lusa Favretto", text: "Ótimo trabalho, pessoal bem atencioso e dedicado!" },
+    { name: "Fernando Bordignon", text: "Serviço de topografia excelente e super preciso! Atendimento ágil, profissionalismo do início ao fim!" },
+    { name: "Fabio André Favreto", text: "Equipe de profissionais excelentes, trabalho ótimo." },
+    { name: "Junior Comparin", text: "Atendimento rápido. Serviço de qualidade." },
+    { name: "Vanessa Bernieri", text: "O melhor atendimento, uma empresa que transmite credibilidade, seriedade e competência." },
+    { name: "Jonas Anael Baptista Nunes", text: "Ótima empresa, profissionais de muita competência! Cumpriram tudo o que prometeram." },
+    { name: "Cristiano Manfro", text: "Muito bom atendimento com agilidade, profissionais de ótima qualidade." },
+    { name: "Guilherme Bernieri", text: "Excelente empresa, ótimo atendimento e muito prestativo, indicarei sempre que possível!" },
+    { name: "Atenon Net", text: "Super indico, muito atencioso e comprometido com o que faz." },
+    { name: "Jorge Cival Baptista Nunes", text: "Serviço de qualidade com profissional capacitado, cumprindo os prazos combinados." },
   ];
 
   return (
-    <section className="bg-muted/50 py-24">
+    <section className="bg-[#f8f9fa] py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <h2 className="mt-4 text-4xl font-black tracking-tight text-foreground sm:text-5xl">
-            O que dizem nossos clientes
+          <h2 className="text-4xl font-black tracking-tight text-foreground sm:text-5xl">
+            O que nossos clientes falam da Galli
           </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
+            Mais segurança, agilidade e confiança para regularizar seu imóvel.
+          </p>
         </div>
         <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((t, i) => (
-            <div key={i} className="group relative overflow-hidden rounded-2xl border bg-card p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-              <div className="absolute -right-4 -top-4 text-8xl font-black text-primary/[0.04]">"</div>
-              <div className="relative">
-                <div className="flex gap-1">
-                  {[...Array(5)].map((_, j) => (
-                    <Star key={j} className="h-5 w-5 fill-galli-yellow text-galli-yellow" />
-                  ))}
+            <div key={i} className="group relative rounded-2xl border border-white/50 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+              <div className="flex gap-1 mb-4">
+                {[...Array(5)].map((_, j) => (
+                  <Star key={j} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                ))}
+              </div>
+              <p className="text-base leading-relaxed text-muted-foreground italic mb-6">"{t.text}"</p>
+              <div className="mt-auto flex items-center gap-3">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#2d67a8] text-sm font-bold text-white uppercase">
+                  {t.name.charAt(0)}
                 </div>
-                <p className="mt-5 text-sm leading-relaxed text-muted-foreground">"{t.text}"</p>
-                <div className="mt-6 flex items-center gap-3">
-                  <div className="h-10 w-10 overflow-hidden rounded-full bg-primary/10">
-                    <img
-                      src={t.image}
-                      alt={t.name}
-                      className="h-full w-full object-cover"
-                    />
-                  </div>
-                  <p className="text-sm font-semibold text-foreground">{t.name}</p>
-                </div>
+                <p className="text-sm font-bold text-foreground">{t.name}</p>
               </div>
             </div>
           ))}
