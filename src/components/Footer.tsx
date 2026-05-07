@@ -3,8 +3,8 @@ import { Phone, MapPin, Instagram, ArrowUpRight } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden border-t bg-foreground text-background">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,var(--color-primary)/0.15,transparent_50%)]" />
+    <footer className="relative overflow-hidden border-t bg-slate-50 text-foreground">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,var(--color-primary)/0.03,transparent_50%)]" />
       <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div>
@@ -16,13 +16,13 @@ export function Footer() {
                 loading="lazy"
               />
             </div>
-            <p className="mt-5 text-sm leading-relaxed opacity-60">
+            <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
               Especialistas em regularização de imóveis e georreferenciamento junto ao INCRA no norte do RS.
             </p>
           </div>
 
           <div>
-            <h4 className="mb-5 text-xs font-bold uppercase tracking-widest opacity-40">Navegação</h4>
+            <h4 className="mb-5 text-xs font-bold uppercase tracking-widest text-primary">Navegação</h4>
             <nav className="flex flex-col gap-3">
               {[
                 { to: "/", label: "Home" },
@@ -31,30 +31,30 @@ export function Footer() {
                 { to: "/faq", label: "FAQ" },
                 { to: "/contato", label: "Contato" },
               ].map((l) => (
-                <Link key={l.to} to={l.to as any} className="text-sm opacity-60 transition-opacity hover:opacity-100">{l.label}</Link>
+                <Link key={l.to} to={l.to as any} className="text-sm text-muted-foreground transition-colors hover:text-primary">{l.label}</Link>
               ))}
             </nav>
           </div>
 
           <div>
-            <h4 className="mb-5 text-xs font-bold uppercase tracking-widest opacity-40">Contato</h4>
+            <h4 className="mb-5 text-xs font-bold uppercase tracking-widest text-primary">Contato</h4>
             <div className="flex flex-col gap-4">
-              <a href="https://wa.me/5554984007983" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2.5 text-sm opacity-60 transition-opacity hover:opacity-100">
-                <Phone className="h-4 w-4 shrink-0" /> (54) 98400-7983
+              <a href="https://wa.me/5554984007983" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2.5 text-sm text-muted-foreground transition-colors hover:text-primary">
+                <Phone className="h-4 w-4 shrink-0 text-primary" /> (54) 98400-7983
               </a>
-              <a href="https://www.instagram.com/gallitopografia/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2.5 text-sm opacity-60 transition-opacity hover:opacity-100">
-                <Instagram className="h-4 w-4 shrink-0" /> @gallitopografia
+              <a href="https://www.instagram.com/gallitopografia/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2.5 text-sm text-muted-foreground transition-colors hover:text-primary">
+                <Instagram className="h-4 w-4 shrink-0 text-primary" /> @gallitopografia
               </a>
-              <div className="flex items-start gap-2.5 text-sm opacity-60">
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0" />
+              <div className="flex items-start gap-2.5 text-sm text-muted-foreground">
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                 <span>Av. 7 de Setembro, 1952, sala 2<br />Tapejara/RS</span>
               </div>
             </div>
           </div>
 
           <div>
-            <h4 className="mb-5 text-xs font-bold uppercase tracking-widest opacity-40">Consultoria Gratuita</h4>
-            <p className="mb-5 text-sm opacity-60">
+            <h4 className="mb-5 text-xs font-bold uppercase tracking-widest text-primary">Consultoria Gratuita</h4>
+            <p className="mb-5 text-sm text-muted-foreground">
               Agende sem custo e resolva as questões do seu imóvel com um especialista.
             </p>
             <a
@@ -70,7 +70,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 border-t border-background/10 pt-6 text-center text-xs opacity-40">
+        <div className="mt-14 border-t border-black/5 pt-6 text-center text-xs text-muted-foreground/60">
           © {new Date().getFullYear()} Galli Topografia e Georreferenciamento. Todos os direitos reservados.
         </div>
       </div>
