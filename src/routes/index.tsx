@@ -104,7 +104,7 @@ function HeroSection() {
         {/* Right floating cards */}
         <div className="absolute bottom-12 right-8 hidden flex-col gap-4 lg:flex">
           <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
-            <p className="text-4xl font-black text-white">+4 Anos</p>
+            <p className="text-4xl font-black text-white">+5 Anos</p>
             <p className="mt-1 text-sm font-medium text-white/60">de experiência</p>
           </div>
           <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
@@ -147,7 +147,7 @@ function LogoBar() {
 /* ─── STATS ─── */
 function StatsSection() {
   const stats = [
-    { value: "+4", suffix: " Anos", label: "de experiência", color: "text-primary" },
+    { value: "+5", suffix: " Anos", label: "de experiência", color: "text-primary" },
     { value: "100", suffix: "%", label: "Garantia de serviço", color: "text-galli-green" },
     { value: "Centenas", suffix: "", label: "de clientes atendidos", color: "text-galli-yellow" },
     { value: "~85", suffix: "%", label: "dos imóveis rurais precisam de GEO", color: "text-primary" },
