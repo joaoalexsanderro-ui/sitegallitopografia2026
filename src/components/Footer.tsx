@@ -70,9 +70,9 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 border-t border-black/5 pt-6 text-center text-xs text-muted-foreground/60">
-          © {new Date().getFullYear()} Galli Topografia e Georreferenciamento. Todos os direitos reservados.
-        </div>
+      </div>
+      <div className="bg-[#2d67a8] py-6 text-center text-xs font-medium text-white/90">
+        © {new Date().getFullYear()} Galli Topografia e Georreferenciamento. Todos os direitos reservados.
       </div>
     </footer>
   );
