@@ -487,7 +487,7 @@ function UrgencySection() {
 /* ─── EQUIPE ─── */
 function TeamSection() {
   const team = [
-    { name: "Fabiano Marcos Galli", role: "CEO & Fundador Resp. Técnico", photo: "https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1778162397719_p4ptvs_equipe_Galli__1_.png" },
+    { name: "Fabiano Marcos Galli", role: "Fundador Resp. Técnico", photo: "https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1778162397719_p4ptvs_equipe_Galli__1_.png" },
     { name: "Talita Nunes Galli", role: "Administrativo", photo: "https://gallitopografia.com.br/wp-content/uploads/2026/04/4.png" },
     { name: "Eduardo Cichelero", role: "Setor de Projetos", photo: "https://gallitopografia.com.br/wp-content/uploads/2026/04/2.png" },
     { name: "Deivid Campos", role: "Técnico de Campo", photo: "https://gallitopografia.com.br/wp-content/uploads/2026/04/1.png" },
