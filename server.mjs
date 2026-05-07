@@ -57,6 +57,7 @@ app.use(
 
     if (pathname.includes('..')) return;
 
+    // Resolve file path relative to dist/client
     const filePath = path.join(__dirname, 'dist', 'client', pathname);
 
     try {
@@ -64,7 +65,10 @@ app.use(
         const ext = path.extname(filePath);
         event.node.res.setHeader('Content-Type', getMimeType(ext));
         event.node.res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
-        return fs.readFileSync(filePath);
+        
+        // Use a stream for better performance and reliability with binary files
+        const stream = fs.createReadStream(filePath);
+        return stream;
       }
     } catch (e) {
       // Fall through to SSR
