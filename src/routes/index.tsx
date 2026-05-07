@@ -505,30 +505,50 @@ function TeamSection() {
           </p>
         </div>
 
-        <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {team.map((member) => (
-            <div
-              key={member.name}
-              className="group relative overflow-hidden rounded-2xl border bg-card p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:border-primary/20 hover:shadow-xl"
-            >
-              <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-primary/5 to-transparent" />
-              <div className="relative mx-auto h-40 w-40 overflow-hidden rounded-full border-4 border-background shadow-lg ring-2 ring-primary/10 transition-transform duration-300 group-hover:scale-105">
-                <img
-                  src={member.photo}
-                  alt={`Foto de ${member.name}`}
-                  loading="lazy"
-                  width={320}
-                  height={320}
-                  className="h-full w-full object-cover"
-                />
-              </div>
-              <h3 className="relative mt-6 text-lg font-bold text-foreground">{member.name}</h3>
-              <p className="relative mt-1 text-sm font-medium text-primary">{member.role}</p>
-              <div className="relative mt-4 flex justify-center">
-                <span className="h-1 w-12 rounded-full bg-gradient-to-r from-primary to-galli-green" />
-              </div>
+        <div className="mt-16 space-y-12">
+          {/* Foto da Equipe Completa */}
+          <div className="relative overflow-hidden rounded-3xl border bg-card shadow-2xl transition-all duration-300 hover:shadow-primary/5">
+            <div className="aspect-[21/9] w-full">
+              <img
+                src="https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1778162893488_gm62k9_ChatGPT_Image_7_05_2026__11_07_50.png"
+                alt="Equipe Galli Topografia"
+                className="h-full w-full object-cover"
+                loading="lazy"
+              />
             </div>
-          ))}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+            <div className="absolute bottom-6 left-6 right-6">
+              <p className="text-xl font-bold text-white">Nosso Time Completo</p>
+              <p className="text-sm text-white/80">Unidos para oferecer o melhor serviço de topografia e regularização.</p>
+            </div>
+          </div>
+
+          {/* Grid de Membros */}
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            {team.map((member) => (
+              <div
+                key={member.name}
+                className="group relative overflow-hidden rounded-2xl border bg-card p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:border-primary/20 hover:shadow-xl"
+              >
+                <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-primary/5 to-transparent" />
+                <div className="relative mx-auto h-40 w-40 overflow-hidden rounded-full border-4 border-background shadow-lg ring-2 ring-primary/10 transition-transform duration-300 group-hover:scale-105">
+                  <img
+                    src={member.photo}
+                    alt={`Foto de ${member.name}`}
+                    loading="lazy"
+                    width={320}
+                    height={320}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <h3 className="relative mt-6 text-lg font-bold text-foreground">{member.name}</h3>
+                <p className="relative mt-1 text-sm font-medium text-primary">{member.role}</p>
+                <div className="relative mt-4 flex justify-center">
+                  <span className="h-1 w-12 rounded-full bg-gradient-to-r from-primary to-galli-green" />
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
