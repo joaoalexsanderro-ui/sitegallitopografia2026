@@ -465,7 +465,7 @@ function UrgencySection() {
         </h2>
         <p className="mt-6 text-lg leading-relaxed text-foreground/75">
           Nossas agendas ficam frequentemente <strong className="text-foreground">fechadas</strong> para esse atendimento especial. 
-          A procura costuma lotar rapidamente.
+          A disponibilidade é limitada.
         </p>
         <p className="mt-4 text-2xl font-black text-foreground">
           Garanta seu atendimento agora.
