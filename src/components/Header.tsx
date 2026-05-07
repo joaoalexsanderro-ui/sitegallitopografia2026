@@ -20,7 +20,8 @@ export function Header() {
           <img
             src="https://gallitopografia.com.br/wp-content/uploads/2025/09/LOGO-GALLI-2-9.webp"
             alt="Galli Topografia e Georreferenciamento"
-            className="h-28 w-auto md:h-32"
+            className="h-28 w-auto md:h-32 object-contain rendering-pixelated"
+            style={{ imageRendering: 'auto' }}
             loading="eager"
           />
         </Link>
