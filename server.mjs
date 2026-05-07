@@ -121,6 +121,11 @@ app.use(
         event.node.res.setHeader(key, value);
       });
 
+      // Ensure HTML content type for the main response
+      if (!event.node.res.getHeader('Content-Type')) {
+        event.node.res.setHeader('Content-Type', 'text/html; charset=utf-8');
+      }
+
       event.node.res.statusCode = response.status;
       const responseText = await response.text();
       return responseText;
