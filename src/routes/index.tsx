@@ -70,7 +70,7 @@ function HeroSection() {
 
           <div className="mt-10 flex flex-col gap-4 sm:flex-row">
             <a
-              href="https://wa.me/5554984007983?text=Gostaria%20de%20agendar%20uma%20consultoria"
+              href="https://wa.me/5554984007983?text=Vim%20pelo%20site%20da%20Galli%20Topografia"
               target="_blank"
               rel="noopener noreferrer"
               className="group inline-flex items-center justify-center gap-3 rounded-2xl bg-galli-green px-10 py-5 text-lg font-black text-white shadow-[0_20px_50px_rgba(41,172,84,0.3)] transition-all hover:-translate-y-1 hover:shadow-[0_25px_60px_rgba(41,172,84,0.4)] active:scale-95"
@@ -254,7 +254,7 @@ function DifferentialsSection() {
               <strong className="text-foreground"> todo o processo</strong> com segurança, transparência e compromisso total.
             </p>
             <a
-              href="https://wa.me/5554984007983?text=Gostaria%20de%20agendar%20uma%20consultoria"
+              href="https://wa.me/5554984007983?text=Vim%20pelo%20site%20da%20Galli%20Topografia"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-8 inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3 font-semibold text-primary-foreground transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/25"
@@ -340,7 +340,7 @@ function GeoSection() {
           </div>
 
           <a
-            href="https://wa.me/5554984007983?text=Gostaria%20de%20saber%20sobre%20georreferenciamento"
+            href="https://wa.me/5554984007983?text=Vim%20pelo%20site%20da%20Galli%20Topografia"
             target="_blank"
             rel="noopener noreferrer"
             className="mt-10 inline-flex items-center gap-2 rounded-xl bg-galli-green px-7 py-3.5 font-bold text-primary-foreground shadow-lg shadow-galli-green/25 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-galli-green/30"
@@ -688,7 +688,7 @@ function CTASection() {
           ))}
         </div>
         <a
-          href="https://wa.me/5554984007983?text=Gostaria%20de%20agendar%20uma%20consultoria"
+          href="https://wa.me/5554984007983?text=Vim%20pelo%20site%20da%20Galli%20Topografia"
           target="_blank"
           rel="noopener noreferrer"
           className="group mt-10 inline-flex items-center gap-3 rounded-2xl bg-galli-yellow px-10 py-5 text-xl font-black text-foreground shadow-xl shadow-galli-yellow/20 transition-all hover:-translate-y-1 hover:shadow-2xl"
