@@ -42,6 +42,7 @@ export const Route = createRootRoute({
     ],
     links: [
       { rel: "stylesheet", href: appCss },
+      { rel: "icon", type: "image/png", href: "https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1778165272799_73nx6q_Logo_S_mbolo.png" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" },
