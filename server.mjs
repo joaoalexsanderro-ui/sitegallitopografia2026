@@ -101,7 +101,9 @@ app.use(
         body: ['GET', 'HEAD'].includes(event.node.req.method) ? null : event.node.req
       });
 
+      console.log(`Forwarding to SSR handler: ${url.toString()}`);
       const response = await handler(request);
+      console.log(`SSR Response status: ${response.status}`);
       
       response.headers.forEach((value, key) => {
         event.node.res.setHeader(key, value);
