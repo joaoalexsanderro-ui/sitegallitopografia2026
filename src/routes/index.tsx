@@ -341,7 +341,7 @@ function GeoSection() {
 /* ─── SERVICES ─── */
 function ServicesSection() {
   const services = [
-    { icon: MapPin, title: "Georreferenciamento", description: "Obrigatório para imóveis rurais. Realizamos levantamento com alta precisão e certificação junto ao INCRA, garantindo segurança jurídica e regularização completa.", badge: "Principal" },
+    { icon: MapPin, title: "Georreferenciamento", description: "Georreferenciamento de imóveis rurais com certificação oficial junto ao INCRA. Do levantamento técnico até o acompanhamento no Registro de Imóveis.", badge: "Principal" },
     { icon: FileCheck, title: "Regularização de Imóveis", description: "Cuidamos de toda a documentação do imóvel rural ou urbano, incluindo CAR, CCIR, inventários, retificações e acompanhamento em cartório.", badge: null },
     { icon: Ruler, title: "Levantamento Topográfico", description: "Medições precisas para áreas rurais e urbanas com equipamentos de alta tecnologia, garantindo agilidade e confiabilidade nos projetos.", badge: null },
     { icon: Target, title: "Locação de Obras e Terraplenagem", description: "Locação de estacas, pilares e acompanhamento técnico para obras e movimentação de terra com máxima precisão.", badge: null },
