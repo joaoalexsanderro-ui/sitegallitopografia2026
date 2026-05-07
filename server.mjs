@@ -118,7 +118,7 @@ app.use(
     } catch (error) {
       console.error('SSR Error:', error);
       event.node.res.statusCode = 500;
-      return 'Internal Server Error';
+      return `Internal Server Error: ${error.message}\n${error.stack}`;
     }
   })
 );
