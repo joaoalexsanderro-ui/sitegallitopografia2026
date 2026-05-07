@@ -18,7 +18,7 @@ export function Header() {
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link to="/" className="group flex items-center -my-4">
           <img
-            src="https://gallitopografia.com.br/wp-content/uploads/2025/09/LOGO-GALLI-7.webp"
+            src="https://gallitopografia.com.br/wp-content/uploads/2025/09/LOGO-GALLI-2-9.webp"
             alt="Galli Topografia e Georreferenciamento"
             className="h-28 w-auto md:h-32"
             loading="eager"
