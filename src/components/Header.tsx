@@ -14,7 +14,7 @@ export function Header() {
   ] as const;
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/50 bg-card/80 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-[#2c67a4] backdrop-blur-xl">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link to="/" className="group flex items-center -my-4">
           <img
@@ -30,8 +30,8 @@ export function Header() {
             <Link
               key={link.to}
               to={link.to}
-              className="rounded-lg px-3.5 py-2 text-sm font-medium text-muted-foreground transition-all hover:bg-accent hover:text-foreground"
-              activeProps={{ className: "bg-primary/10 text-primary font-semibold" }}
+              className="rounded-lg px-3.5 py-2 text-sm font-medium text-white/90 transition-all hover:bg-white/10 hover:text-white"
+              activeProps={{ className: "bg-white/20 text-white font-semibold" }}
             >
               {link.label}
             </Link>
@@ -49,7 +49,7 @@ export function Header() {
 
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="rounded-lg p-2.5 text-muted-foreground transition-colors hover:bg-accent md:hidden"
+          className="rounded-lg p-2.5 text-white/90 transition-colors hover:bg-white/10 md:hidden"
           aria-label="Menu"
         >
           {menuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -57,14 +57,14 @@ export function Header() {
       </div>
 
       {menuOpen && (
-        <div className="animate-in slide-in-from-top-2 border-t bg-card px-4 pb-6 pt-3 md:hidden">
+        <div className="animate-in slide-in-from-top-2 border-t border-white/10 bg-[#2c67a4] px-4 pb-6 pt-3 md:hidden">
           <nav className="flex flex-col gap-1">
             {navLinks.map((link) => (
               <Link
                 key={link.to}
                 to={link.to}
-                className="rounded-lg px-4 py-3 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
-                activeProps={{ className: "bg-primary/10 text-primary font-semibold" }}
+                className="rounded-lg px-4 py-3 text-sm font-medium text-white/90 transition-colors hover:bg-white/10 hover:text-white"
+                activeProps={{ className: "bg-white/20 text-white font-semibold" }}
                 onClick={() => setMenuOpen(false)}
               >
                 {link.label}
