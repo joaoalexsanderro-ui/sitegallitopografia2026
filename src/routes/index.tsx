@@ -558,9 +558,12 @@ function TeamSection() {
 /* ─── TESTIMONIALS ─── */
 function TestimonialsSection() {
   const testimonials = [
-    { name: "Alini Sbeghen", text: "Excelente atendimento, competência e agilidade. Fabiano excelente profissional!!" },
-    { name: "Sandro Vicentini", text: "Serviço de muita qualidade e confiança. Recomendamos." },
-    { name: "Junior Fontana", text: "Atendimento diferenciado e de extrema qualidade!" },
+    { name: "Junior Fontana", text: "Atendimento diferenciado e de extrema qualidade!", image: "https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1778163906908_ytd9ln_image.png" },
+    { name: "Deni Lângaro", text: "Excelente atendimento, competência e agilidade. Fabiano excelente profissional!!", image: "https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1778163906908_ytd9ln_image.png" },
+    { name: "Sandro Vicentini", text: "Serviço de muita qualidade e confiança. Recomendamos.", image: "https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1778163906908_ytd9ln_image.png" },
+    { name: "Alini Sbeghen", text: "Empresa muito séria e comprometida com o cliente. Recomendo!", image: "https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1778163906908_ytd9ln_image.png" },
+    { name: "Maikel de Oliveira", text: "Atendimento nota 10, resolveram meu problema com agilidade.", image: "https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1778163906908_ytd9ln_image.png" },
+    { name: "Igor Dall Olivo", text: "Profissionais qualificados e serviço de primeira linha.", image: "https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1778163906908_ytd9ln_image.png" },
   ];
 
   return (
@@ -571,7 +574,7 @@ function TestimonialsSection() {
             O que dizem nossos clientes
           </h2>
         </div>
-        <div className="mt-16 grid gap-8 sm:grid-cols-3">
+        <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((t, i) => (
             <div key={i} className="group relative overflow-hidden rounded-2xl border bg-card p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
               <div className="absolute -right-4 -top-4 text-8xl font-black text-primary/[0.04]">"</div>
@@ -583,8 +586,12 @@ function TestimonialsSection() {
                 </div>
                 <p className="mt-5 text-sm leading-relaxed text-muted-foreground">"{t.text}"</p>
                 <div className="mt-6 flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-sm font-bold text-primary">
-                    {t.name.charAt(0)}
+                  <div className="h-10 w-10 overflow-hidden rounded-full bg-primary/10">
+                    <img
+                      src={t.image}
+                      alt={t.name}
+                      className="h-full w-full object-cover"
+                    />
                   </div>
                   <p className="text-sm font-semibold text-foreground">{t.name}</p>
                 </div>
