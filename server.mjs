@@ -113,20 +113,31 @@ app.use(
         duplex: 'half',
       });
 
+      console.log(`Handling SSR request for: ${url.pathname}`);
       const response = await handler(request);
+      console.log(`SSR Response status: ${response.status}`);
 
       response.headers.forEach((value, key) => {
-        event.node.res.setHeader(key, value);
+        // Skip some headers that might cause issues when proxied
+        if (!['content-encoding', 'content-length', 'transfer-encoding'].includes(key.toLowerCase())) {
+          event.node.res.setHeader(key, value);
+        }
       });
 
+      // Ensure HTML content type if not set
+      if (!event.node.res.getHeader('Content-Type')) {
+        event.node.res.setHeader('Content-Type', 'text/html; charset=utf-8');
+      }
+
       event.node.res.statusCode = response.status;
-      return await response.text();
+      const responseText = await response.text();
+      return responseText;
     } catch (error) {
-      console.error('SSR Error:', error);
+      console.error('SSR Error detailed:', error);
       return createError({
         statusCode: 500,
         statusMessage: 'Internal Server Error',
-        data: error.stack,
+        data: error.message + '\n' + error.stack,
       });
     }
   })
