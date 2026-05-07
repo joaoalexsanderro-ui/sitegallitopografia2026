@@ -4,6 +4,7 @@ import {
   eventHandler,
   toNodeListener,
   createError,
+  sendStream,
 } from 'h3';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -49,7 +50,8 @@ const getMimeType = (ext) => {
   return mimes[ext.toLowerCase()] || 'application/octet-stream';
 };
 
-// Middleware for static files
+// SSR Handler MUST COME FIRST if we want to handle routes correctly
+// Or we need to be very specific about what is a static file
 app.use(
   eventHandler(async (event) => {
     const url = new URL(event.node.req.url, `http://${event.node.req.headers.host || 'localhost'}`);
@@ -66,19 +68,14 @@ app.use(
         event.node.res.setHeader('Content-Type', getMimeType(ext));
         event.node.res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
         
-        // Use a stream for better performance and reliability with binary files
         const stream = fs.createReadStream(filePath);
-        return stream;
+        return sendStream(event, stream);
       }
     } catch (e) {
-      // Fall through to SSR
+      // Fall through
     }
-  })
-);
 
-// SSR Handler
-app.use(
-  eventHandler(async (event) => {
+    // SSR Handler
     if (!handler) {
       throw createError({
         statusCode: 500,
@@ -86,16 +83,19 @@ app.use(
       });
     }
 
-    const host = event.node.req.headers.host || 'localhost';
-    const protocol = event.node.req.headers['x-forwarded-proto'] || 'http';
-    const url = new URL(event.node.req.url, `${protocol}://${host}`);
-
-    // Skip SSR for asset-like paths that weren't found
-    if (url.pathname.includes('.') && !url.pathname.endsWith('.html')) {
-      return;
+    // Skip SSR for asset-like paths that weren't found in dist/client
+    if (pathname.includes('.') && !pathname.endsWith('.html')) {
+      return createError({
+        statusCode: 404,
+        statusMessage: 'Not Found',
+      });
     }
 
     try {
+      const host = event.node.req.headers.host || 'localhost';
+      const protocol = event.node.req.headers['x-forwarded-proto'] || 'http';
+      const fullUrl = new URL(event.node.req.url, `${protocol}://${host}`);
+
       const requestHeaders = new Headers();
       Object.entries(event.node.req.headers).forEach(([key, value]) => {
         if (Array.isArray(value)) {
@@ -105,39 +105,36 @@ app.use(
         }
       });
 
-      const request = new Request(url.toString(), {
+      const request = new Request(fullUrl.toString(), {
         method: event.node.req.method,
         headers: requestHeaders,
         body: ['GET', 'HEAD'].includes(event.node.req.method) ? null : event.node.req,
-        // @ts-ignore - Node.js Request init might need this
         duplex: 'half',
       });
 
-      console.log(`Handling SSR request for: ${url.pathname}`);
+      console.log(`Handling SSR request for: ${pathname}`);
       const response = await handler(request);
-      console.log(`SSR Response status: ${response.status}`);
-
+      
+      event.node.res.statusCode = response.status;
+      
       response.headers.forEach((value, key) => {
-        // Skip some headers that might cause issues when proxied
         if (!['content-encoding', 'content-length', 'transfer-encoding'].includes(key.toLowerCase())) {
           event.node.res.setHeader(key, value);
         }
       });
 
-      // Ensure HTML content type if not set
       if (!event.node.res.getHeader('Content-Type')) {
         event.node.res.setHeader('Content-Type', 'text/html; charset=utf-8');
       }
 
-      event.node.res.statusCode = response.status;
       const responseText = await response.text();
       return responseText;
     } catch (error) {
-      console.error('SSR Error detailed:', error);
+      console.error('SSR Error:', error);
       return createError({
         statusCode: 500,
         statusMessage: 'Internal Server Error',
-        data: error.message + '\n' + error.stack,
+        data: error.message,
       });
     }
   })
