@@ -231,7 +231,7 @@ function DifferentialsSection() {
           <div>
             <h2 className="mt-4 text-4xl font-black tracking-tight text-foreground sm:text-5xl">
               Por que escolher a{" "}
-              <span className="bg-gradient-to-r from-primary to-galli-green bg-clip-text text-transparent">Galli</span>?
+              <span className="text-[#2c67a4]">Galli</span>?
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
               Diferente de outras empresas que entregam apenas o projeto básico, nós cuidamos de 
