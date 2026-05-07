@@ -395,10 +395,10 @@ function ServicesSection() {
 /* ─── HOW IT WORKS ─── */
 function HowItWorksSection() {
   const steps = [
-    { number: "01", title: "Agendamento", description: "Entre em contato pelo WhatsApp e agende sua consultoria gratuita.", color: "from-primary to-primary/80" },
-    { number: "02", title: "Análise gratuita", description: "Visitamos seu imóvel, analisamos documentação e tiramos suas dúvidas — sem custo.", color: "from-galli-green to-galli-green/80" },
-    { number: "03", title: "Proposta", description: "Apresentamos as melhores soluções de forma econômica e prática.", color: "from-galli-yellow to-galli-yellow/80" },
-    { number: "04", title: "Execução completa", description: "Medição, projeto, assinaturas, protocolo em cartório e acompanhamento.", color: "from-primary to-galli-green" },
+    { number: "01", title: "Agendamento", description: "Entre em contato pelo WhatsApp e agende sua consultoria gratuita.", color: "bg-[#2c67a4]" },
+    { number: "02", title: "Análise gratuita", description: "Visitamos seu imóvel, analisamos documentação e tiramos suas dúvidas — sem custo.", color: "bg-[#2c67a4]" },
+    { number: "03", title: "Proposta", description: "Apresentamos as melhores soluções de forma econômica e prática.", color: "bg-[#2c67a4]" },
+    { number: "04", title: "Execução completa", description: "Medição, projeto, assinaturas, protocolo em cartório e acompanhamento.", color: "bg-[#2c67a4]" },
   ];
 
   return (
@@ -424,7 +424,7 @@ function HowItWorksSection() {
           {steps.map((step) => (
             <div key={step.number} className="group relative">
               <div className="rounded-2xl border bg-card p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-                <div className={`flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${step.color} text-lg font-black text-primary-foreground shadow-lg`}>
+                <div className={`flex h-12 w-12 items-center justify-center rounded-xl ${step.color} text-lg font-black text-primary-foreground shadow-lg`}>
                   {step.number}
                 </div>
                 <h3 className="mt-5 text-xl font-bold text-foreground">{step.title}</h3>
