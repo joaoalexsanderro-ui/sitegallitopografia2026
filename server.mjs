@@ -1,90 +1,92 @@
 import { createServer } from 'node:http';
-import { createApp, eventHandler, toNodeListener } from 'h3-v2';
-import { default as handler } from './dist/server/server.js';
-import { readFile, stat } from 'node:fs/promises';
-import { join } from 'node:path';
+import {
+  createApp,
+  eventHandler,
+  toNodeListener,
+} from 'h3';
+import { createMiddleware } from '@tanstack/react-start-server';
+import { getManifest } from '@tanstack/react-start/server';
+import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import fs from 'node:fs';
 
-const __dirname = fileURLToPath(new URL('.', import.meta.url));
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Import the server build
+const serverBuild = await import('./dist/server/index.mjs');
+
 const app = createApp();
 
-// Mime types helper
-const MIME_TYPES = {
-  '.html': 'text/html',
-  '.js': 'text/javascript',
-  '.css': 'text/css',
-  '.json': 'application/json',
-  '.png': 'image/png',
-  '.jpg': 'image/jpeg',
-  '.gif': 'image/gif',
-  '.svg': 'image/svg+xml',
-  '.ico': 'image/x-icon',
+// Simple MIME lookup
+const getMimeType = (ext) => {
+  const mimes = {
+    '.js': 'application/javascript',
+    '.mjs': 'application/javascript',
+    '.css': 'text/css',
+    '.html': 'text/html',
+    '.png': 'image/png',
+    '.jpg': 'image/jpeg',
+    '.jpeg': 'image/jpeg',
+    '.gif': 'image/gif',
+    '.svg': 'image/svg+xml',
+    '.ico': 'image/x-icon',
+    '.json': 'application/json',
+    '.woff': 'font/woff',
+    '.woff2': 'font/woff2',
+  };
+  return mimes[ext.toLowerCase()] || 'application/octet-stream';
 };
 
-// SSR Handler
-const ssrHandler = async (event) => {
-  const url = new URL(event.node.req.url, `http://${event.node.req.headers.host || 'localhost'}`);
-  
-  const request = new Request(url.href, {
-    method: event.node.req.method,
-    headers: event.node.req.headers,
-  });
-
-  try {
-    const response = await handler.fetch(request);
+// Serve static files from dist/client
+app.use(
+  eventHandler(async (event) => {
+    const url = new URL(event.node.req.url, `http://${event.node.req.headers.host || 'localhost'}`);
+    let pathname = url.pathname;
     
-    event.node.res.statusCode = response.status;
-    response.headers.forEach((value, key) => {
-      event.node.res.setHeader(key, value);
-    });
-    
-    if (response.body) {
-      const reader = response.body.getReader();
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-        event.node.res.write(value);
-      }
+    // Safety check for directory traversal
+    if (pathname.includes('..')) {
+      return;
     }
-    event.node.res.end();
-  } catch (err) {
-    console.error('SSR Error:', err);
-    if (!event.node.res.writableEnded) {
-      event.node.res.statusCode = 500;
-      event.node.res.end('Internal Server Error');
-    }
-  }
-};
 
-// Main handler
-app.use(eventHandler(async (event) => {
-  const url = new URL(event.path, 'http://localhost');
-  const pathname = url.pathname;
-  
-  // Try serving from dist/client
-  const publicPath = pathname === '/' ? '/index.html' : pathname;
-  const filePath = join(__dirname, 'dist/client', publicPath);
-  
-  try {
-    const s = await stat(filePath);
-    if (s.isFile()) {
-      const ext = publicPath.substring(publicPath.lastIndexOf('.'));
-      const contentType = MIME_TYPES[ext] || 'application/octet-stream';
-      event.node.res.setHeader('Content-Type', contentType);
-      // Cache assets for production
-      if (pathname.startsWith('/_build/') || pathname.startsWith('/assets/')) {
+    // Default to index.html for root if not handled by SSR (though SSR should handle it)
+    if (pathname === '/') return;
+
+    const filePath = path.join(__dirname, 'dist', 'client', pathname);
+    
+    try {
+      if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
+        const ext = path.extname(filePath);
+        const contentType = getMimeType(ext);
+        
+        event.node.res.setHeader('Content-Type', contentType);
         event.node.res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+        
+        return fs.readFileSync(filePath);
       }
-      return await readFile(filePath);
+    } catch (e) {
+      // Ignore errors
     }
-  } catch (e) {
-    // Not a file, fall through to SSR
-  }
-  
-  return ssrHandler(event);
-}));
+  })
+);
+
+// TanStack Start SSR handler
+const ssrHandler = createMiddleware({
+  getManifest,
+  serverBuild,
+});
+
+app.use(
+  eventHandler(async (event) => {
+    // Let the SSR handler handle the request
+    return ssrHandler(event);
+  })
+);
 
 const port = process.env.PORT || 3000;
 createServer(toNodeListener(app)).listen(port, '0.0.0.0', () => {
   console.log(`Server listening on http://0.0.0.0:${port}`);
 });
+
+
+
