@@ -44,7 +44,8 @@ const getMimeType = (ext) => {
 // Serve static files from dist/client
 app.use(
   eventHandler(async (event) => {
-    const url = new URL(event.node.req.url, 'http://' + (event.node.req.headers.host || 'localhost'));
+    const host = event.node.req.headers.host || 'localhost';
+    const url = new URL(event.node.req.url, 'http://' + host);
     let pathname = url.pathname;
     
     // Safety check for directory traversal
@@ -101,5 +102,5 @@ app.use(
 
 const port = process.env.PORT || 3000;
 createServer(toNodeListener(app)).listen(port, '0.0.0.0', () => {
-  console.log(\`Server listening on http://0.0.0.0:\${port}\`);
+  console.log('Server listening on http://0.0.0.0:' + port);
 });
