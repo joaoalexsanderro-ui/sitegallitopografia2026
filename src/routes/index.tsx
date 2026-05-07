@@ -229,9 +229,6 @@ function DifferentialsSection() {
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid items-center gap-16 lg:grid-cols-2">
           <div>
-            <span className="inline-flex items-center rounded-full bg-galli-green/10 px-4 py-1.5 text-sm font-semibold text-galli-green">
-              Nossos Diferenciais
-            </span>
             <h2 className="mt-4 text-4xl font-black tracking-tight text-foreground sm:text-5xl">
               Por que escolher a{" "}
               <span className="bg-gradient-to-r from-primary to-galli-green bg-clip-text text-transparent">Galli</span>?
