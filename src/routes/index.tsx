@@ -63,7 +63,7 @@ function HeroSection() {
           <div className="mt-8 flex flex-col gap-3 text-sm text-white/70 sm:flex-row sm:gap-6">
             {["Análise gratuita de documentação", "Processo completo até o cartório", "Garantia 100%"].map((t) => (
               <span key={t} className="flex items-center gap-2">
-                <CheckCircle className="h-4 w-4 shrink-0 text-galli-green" /> {t}
+                <CheckCircle className="h-4 w-4 shrink-0 text-black" /> {t}
               </span>
             ))}
           </div>
@@ -73,7 +73,7 @@ function HeroSection() {
               href="https://wa.me/5554984007983?text=Gostaria%20de%20agendar%20uma%20consultoria"
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center justify-center gap-3 rounded-2xl bg-[#29ac54] px-10 py-5 text-lg font-black text-white shadow-[0_20px_50px_rgba(41,172,84,0.3)] transition-all hover:-translate-y-1 hover:shadow-[0_25px_60px_rgba(41,172,84,0.4)] active:scale-95"
+              className="group inline-flex items-center justify-center gap-3 rounded-2xl bg-black px-10 py-5 text-lg font-black text-white shadow-[0_20px_50px_rgba(0,0,0,0.3)] transition-all hover:-translate-y-1 hover:shadow-[0_25px_60px_rgba(0,0,0,0.4)] active:scale-95"
             >
               <Phone className="h-5 w-5" />
               Quero consultoria gratuita
@@ -108,7 +108,7 @@ function HeroSection() {
             <p className="mt-1 text-sm font-medium text-white/60">de experiência</p>
           </div>
           <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
-            <p className="text-4xl font-black text-[#29ac54]">100%</p>
+            <p className="text-4xl font-black text-black">100%</p>
             <p className="mt-1 text-sm font-medium text-white/60">Garantia total</p>
           </div>
         </div>
