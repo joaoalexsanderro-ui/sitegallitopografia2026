@@ -10,9 +10,9 @@ export function Footer() {
           <div>
             <div className="flex items-center">
               <img
-                src="https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1778159686833_r0yhpr_LOGO_2_HORIZONTAL_GALLI_topografia_e_georreferenciamento.png"
+                src="https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1778164744128_5aobqm_Logo_Teste_S_mbolo_-_C_pia.png"
                 alt="Galli Topografia e Georreferenciamento"
-                className="h-20 w-auto md:h-24"
+                className="h-24 w-auto md:h-28"
                 loading="lazy"
               />
             </div>
