@@ -3,6 +3,7 @@ import {
   createApp,
   eventHandler,
   toNodeListener,
+  createError,
 } from 'h3';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -11,15 +12,21 @@ import fs from 'node:fs';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Import the server build
-const serverBuildPath = path.join(__dirname, 'dist', 'server', 'server.js');
-console.log(`Loading server build from: ${serverBuildPath}`);
-const serverBuild = await import(serverBuildPath);
-const handler = serverBuild.default.fetch;
+// Pre-load the server build to catch errors early
+let handler;
+const serverBuildPath = path.resolve(__dirname, 'dist', 'server', 'server.js');
+
+try {
+  console.log(`Attempting to load server build from: ${serverBuildPath}`);
+  const serverBuild = await import(serverBuildPath);
+  handler = serverBuild.default.fetch;
+  console.log('Server build loaded successfully');
+} catch (err) {
+  console.error('CRITICAL: Failed to load server build:', err);
+}
 
 const app = createApp();
 
-// Simple MIME lookup
 const getMimeType = (ext) => {
   const mimes = {
     '.js': 'application/javascript',
@@ -42,47 +49,44 @@ const getMimeType = (ext) => {
   return mimes[ext.toLowerCase()] || 'application/octet-stream';
 };
 
-// Serve static files from dist/client
+// Middleware for static files
 app.use(
   eventHandler(async (event) => {
-    const host = event.node.req.headers.host || 'localhost';
-    const url = new URL(event.node.req.url, 'http://' + host);
-    let pathname = url.pathname;
-    
+    const url = new URL(event.node.req.url, `http://${event.node.req.headers.host || 'localhost'}`);
+    const pathname = url.pathname;
+
     if (pathname.includes('..')) return;
-    
-    // Support root paths for common assets
+
     const filePath = path.join(__dirname, 'dist', 'client', pathname);
-    
-    console.log(`Checking for static file: ${pathname} -> ${filePath}`);
 
     try {
       if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
         const ext = path.extname(filePath);
-        const contentType = getMimeType(ext);
-        
-        console.log(`Serving static file: ${pathname} as ${contentType}`);
-
-        event.node.res.setHeader('Content-Type', contentType);
+        event.node.res.setHeader('Content-Type', getMimeType(ext));
         event.node.res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
-        
         return fs.readFileSync(filePath);
       }
     } catch (e) {
-      console.error(`Error serving static file ${pathname}:`, e);
+      // Fall through to SSR
     }
   })
 );
 
-// SSR handler
+// SSR Handler
 app.use(
   eventHandler(async (event) => {
+    if (!handler) {
+      throw createError({
+        statusCode: 500,
+        statusMessage: 'Server build not loaded',
+      });
+    }
+
     const host = event.node.req.headers.host || 'localhost';
     const protocol = event.node.req.headers['x-forwarded-proto'] || 'http';
-    const url = new URL(event.node.req.url, protocol + '://' + host);
+    const url = new URL(event.node.req.url, `${protocol}://${host}`);
 
-    // If it looks like a static asset that wasn't caught by the static server, 
-    // it's likely a 404 or something we shouldn't SSR.
+    // Skip SSR for asset-like paths that weren't found
     if (url.pathname.includes('.') && !url.pathname.endsWith('.html')) {
       return;
     }
@@ -91,7 +95,7 @@ app.use(
       const requestHeaders = new Headers();
       Object.entries(event.node.req.headers).forEach(([key, value]) => {
         if (Array.isArray(value)) {
-          value.forEach(v => requestHeaders.append(key, v));
+          value.forEach((v) => requestHeaders.append(key, v));
         } else if (value) {
           requestHeaders.set(key, value);
         }
@@ -100,32 +104,31 @@ app.use(
       const request = new Request(url.toString(), {
         method: event.node.req.method,
         headers: requestHeaders,
-        body: ['GET', 'HEAD'].includes(event.node.req.method) ? null : event.node.req
+        body: ['GET', 'HEAD'].includes(event.node.req.method) ? null : event.node.req,
+        // @ts-ignore - Node.js Request init might need this
+        duplex: 'half',
       });
 
-      console.log(`Forwarding to SSR handler: ${url.toString()}`);
       const response = await handler(request);
-      console.log(`SSR Response status: ${response.status}`);
-      
+
       response.headers.forEach((value, key) => {
         event.node.res.setHeader(key, value);
       });
-      
+
       event.node.res.statusCode = response.status;
-      
-      const body = await response.text();
-      return body;
+      return await response.text();
     } catch (error) {
       console.error('SSR Error:', error);
-      event.node.res.statusCode = 500;
-      return `Internal Server Error: ${error.message}\n${error.stack}`;
+      return createError({
+        statusCode: 500,
+        statusMessage: 'Internal Server Error',
+        data: error.stack,
+      });
     }
   })
 );
 
 const port = process.env.PORT || 3000;
-const host = '0.0.0.0';
-
-createServer(toNodeListener(app)).listen(port, host, () => {
-  console.log(`Server listening on http://${host}:${port}`);
+createServer(toNodeListener(app)).listen(port, '0.0.0.0', () => {
+  console.log(`> Server ready at http://0.0.0.0:${port}`);
 });
