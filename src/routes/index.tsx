@@ -406,14 +406,14 @@ function HowItWorksSection() {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,var(--color-primary)/0.03,transparent_60%)]" />
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <span className="inline-flex items-center rounded-full bg-galli-green/10 px-4 py-1.5 text-sm font-semibold text-galli-green">
+          <span className="inline-flex items-center rounded-full bg-black/10 px-4 py-1.5 text-sm font-semibold text-black">
             Passo a Passo
           </span>
           <h2 className="mt-4 text-4xl font-black tracking-tight text-foreground sm:text-5xl">
             Como funciona
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-            Tudo isso, <strong className="text-galli-green">sem nenhum custo</strong> para você na consultoria!
+            Tudo isso, <strong className="text-black">sem nenhum custo</strong> para você na consultoria!
           </p>
         </div>
 
