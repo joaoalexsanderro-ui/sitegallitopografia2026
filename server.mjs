@@ -52,18 +52,22 @@ app.use(
     // Support root paths for common assets
     const filePath = path.join(__dirname, 'dist', 'client', pathname);
     
+    console.log(`Checking for static file: ${pathname} -> ${filePath}`);
+
     try {
       if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
         const ext = path.extname(filePath);
         const contentType = getMimeType(ext);
         
+        console.log(`Serving static file: ${pathname} as ${contentType}`);
+
         event.node.res.setHeader('Content-Type', contentType);
         event.node.res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
         
         return fs.readFileSync(filePath);
       }
     } catch (e) {
-      // Ignore
+      console.error(`Error serving static file ${pathname}:`, e);
     }
   })
 );
