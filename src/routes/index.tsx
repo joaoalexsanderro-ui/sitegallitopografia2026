@@ -51,14 +51,9 @@ function HeroSection() {
         <div className="max-w-2xl">
 
           <h1 className="mt-8 text-5xl font-black leading-[1.1] tracking-tight text-white sm:text-6xl lg:text-7xl xl:text-8xl">
-            Consultoria{" "}
-            <span className="relative inline-block text-galli-yellow">
-              gratuita
-              <svg className="absolute -bottom-2 left-0 h-3 w-full" viewBox="0 0 200 12" fill="none">
-                <path d="M2 8 C50 2, 150 2, 198 8" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-              </svg>
-            </span>{" "}
-            para regularizar seu imóvel
+            Agende uma{" "}
+            <span className="text-[#fcb52f]">consultoria gratuita</span>{" "}
+            com um especialista
           </h1>
 
           <p className="mt-8 text-lg leading-relaxed text-white/80 sm:text-xl">
