@@ -108,7 +108,7 @@ function HeroSection() {
             <p className="mt-1 text-sm font-medium text-white/60">de experiência</p>
           </div>
           <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
-            <p className="text-4xl font-black text-black">100%</p>
+            <p className="text-4xl font-black text-galli-green">100%</p>
             <p className="mt-1 text-sm font-medium text-white/60">Garantia total</p>
           </div>
         </div>
