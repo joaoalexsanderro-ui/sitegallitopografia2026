@@ -70,7 +70,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 border-t border-background/10 pt-6 text-center text-xs opacity-40">
+        <div className="mt-14 border-t border-black/5 pt-6 text-center text-xs text-muted-foreground/60">
           © {new Date().getFullYear()} Galli Topografia e Georreferenciamento. Todos os direitos reservados.
         </div>
       </div>
