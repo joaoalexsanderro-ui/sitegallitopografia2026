@@ -3,8 +3,8 @@ import { Phone, MapPin, Instagram, ArrowUpRight } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden border-t bg-foreground text-background">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,var(--color-primary)/0.15,transparent_50%)]" />
+    <footer className="relative overflow-hidden border-t bg-slate-50 text-foreground">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,var(--color-primary)/0.03,transparent_50%)]" />
       <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div>
