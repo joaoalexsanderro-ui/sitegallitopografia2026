@@ -558,9 +558,9 @@ function TeamSection() {
 /* ─── TESTIMONIALS ─── */
 function TestimonialsSection() {
   const testimonials = [
-    { name: "Produtor Rural — Sertão", text: "A Galli cuidou de tudo! Desde a medição até o registro no cartório. Não precisei me preocupar com nenhuma burocracia. Recomendo de olhos fechados." },
-    { name: "Proprietário — Vila Lângaro", text: "Finalmente regularizei meu imóvel. A consultoria gratuita foi fundamental para entender o que precisava ser feito. Equipe muito competente e atenciosa." },
-    { name: "Produtor Rural — Estação", text: "Serviço excelente! Resolveram a documentação de duas áreas minhas de forma rápida e profissional. Voltei para resolver mais uma propriedade." },
+    { name: "Alini Sbeghen", text: "Excelente atendimento, competência e agilidade. Fabiano excelente profissional!!" },
+    { name: "Sandro Vicentini", text: "Serviço de muita qualidade e confiança. Recomendamos." },
+    { name: "Junior Fontana", text: "Atendimento diferenciado e de extrema qualidade!" },
   ];
 
   return (
