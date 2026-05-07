@@ -22,7 +22,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="mb-5 text-xs font-bold uppercase tracking-widest opacity-40">Navegação</h4>
+            <h4 className="mb-5 text-xs font-bold uppercase tracking-widest text-primary">Navegação</h4>
             <nav className="flex flex-col gap-3">
               {[
                 { to: "/", label: "Home" },
@@ -31,7 +31,7 @@ export function Footer() {
                 { to: "/faq", label: "FAQ" },
                 { to: "/contato", label: "Contato" },
               ].map((l) => (
-                <Link key={l.to} to={l.to as any} className="text-sm opacity-60 transition-opacity hover:opacity-100">{l.label}</Link>
+                <Link key={l.to} to={l.to as any} className="text-sm text-muted-foreground transition-colors hover:text-primary">{l.label}</Link>
               ))}
             </nav>
           </div>
