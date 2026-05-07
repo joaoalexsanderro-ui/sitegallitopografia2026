@@ -570,9 +570,6 @@ function TestimonialsSection() {
           <h2 className="mt-4 text-4xl font-black tracking-tight text-foreground sm:text-5xl">
             O que dizem nossos clientes
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
-            Clientes que voltam, indicam e passam aqui só pra tomar um chimarrão 🧉
-          </p>
         </div>
         <div className="mt-16 grid gap-8 sm:grid-cols-3">
           {testimonials.map((t, i) => (
