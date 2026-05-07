@@ -16,7 +16,7 @@ export function Footer() {
                 loading="lazy"
               />
             </div>
-            <p className="mt-5 text-sm leading-relaxed opacity-60">
+            <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
               Especialistas em regularização de imóveis e georreferenciamento junto ao INCRA no norte do RS.
             </p>
           </div>
