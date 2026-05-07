@@ -454,27 +454,27 @@ function HowItWorksSection() {
 /* ─── URGENCY ─── */
 function UrgencySection() {
   return (
-    <section className="relative overflow-hidden bg-[#29ac54] py-20">
+    <section className="relative overflow-hidden bg-white py-20 border-y border-border/50">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_50%,rgba(0,0,0,0.02),transparent_60%)]" />
       <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-white/20 backdrop-blur-sm">
-          <Clock className="h-8 w-8 text-white" />
+        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-black/5">
+          <Clock className="h-8 w-8 text-foreground" />
         </div>
-        <h2 className="mt-6 text-4xl font-black text-white sm:text-5xl">
+        <h2 className="mt-6 text-4xl font-black text-foreground sm:text-5xl">
           Mas você precisa correr...
         </h2>
-        <p className="mt-6 text-lg leading-relaxed text-white/90">
-          Nossas agendas ficam frequentemente <strong className="text-white">fechadas</strong> para esse atendimento especial. 
+        <p className="mt-6 text-lg leading-relaxed text-foreground/75">
+          Nossas agendas ficam frequentemente <strong className="text-foreground">fechadas</strong> para esse atendimento especial. 
           A disponibilidade é limitada.
         </p>
-        <p className="mt-4 text-2xl font-black text-white">
+        <p className="mt-4 text-2xl font-black text-foreground">
           Garanta seu atendimento agora.
         </p>
         <a
           href="https://wa.me/5554984007983?text=Gostaria%20de%20agendar%20uma%20consultoria"
           target="_blank"
           rel="noopener noreferrer"
-          className="group mt-8 inline-flex items-center gap-2 rounded-xl bg-white px-8 py-4 text-lg font-bold text-[#29ac54] shadow-xl shadow-black/10 transition-all hover:-translate-y-1 hover:shadow-2xl"
+          className="group mt-8 inline-flex items-center gap-2 rounded-xl bg-[#29ac54] px-8 py-4 text-lg font-bold text-white shadow-xl shadow-[#29ac54]/20 transition-all hover:-translate-y-1 hover:shadow-2xl"
         >
           Quero consultoria com especialista
           <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
