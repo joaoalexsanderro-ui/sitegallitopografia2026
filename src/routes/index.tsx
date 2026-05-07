@@ -561,7 +561,6 @@ function TestimonialsSection() {
     { name: "Érica Lusa Favretto", text: "Ótimo trabalho, pessoal bem atencioso e dedicado!" },
     { name: "Fernando Bordignon", text: "Serviço de topografia excelente e super preciso! Atendimento ágil, profissionalismo do início ao fim!" },
     { name: "Fabio André Favreto", text: "Equipe de profissionais excelentes, trabalho ótimo." },
-    { name: "Junior Comparin", text: "Atendimento rápido. Serviço de qualidade." },
     { name: "Vanessa Bernieri", text: "O melhor atendimento, uma empresa que transmite credibilidade, seriedade e competência." },
     { name: "Jonas Anael Baptista Nunes", text: "Ótima empresa, profissionais de muita competência! Cumpriram tudo o que prometeram." },
     { name: "Cristiano Manfro", text: "Muito bom atendimento com agilidade, profissionais de ótima qualidade." },
