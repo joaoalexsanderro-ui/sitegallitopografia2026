@@ -39,7 +39,7 @@ export function Footer() {
           <div>
             <h4 className="mb-5 text-xs font-bold uppercase tracking-widest text-primary">Contato</h4>
             <div className="flex flex-col gap-4">
-              <a href="https://wa.me/5554984007983" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2.5 text-sm text-muted-foreground transition-colors hover:text-primary">
+              <a href="https://wa.me/5554984007983?text=Vim%20pelo%20site%20da%20Galli%20Topografia" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2.5 text-sm text-muted-foreground transition-colors hover:text-primary">
                 <Phone className="h-4 w-4 shrink-0 text-primary" /> (54) 98400-7983
               </a>
               <a href="https://www.instagram.com/gallitopografia/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2.5 text-sm text-muted-foreground transition-colors hover:text-primary">
@@ -58,7 +58,7 @@ export function Footer() {
               Agende sem custo e resolva as questões do seu imóvel com um especialista.
             </p>
             <a
-              href="https://wa.me/5554984007983?text=Gostaria%20de%20agendar%20uma%20consultoria"
+              href="https://wa.me/5554984007983?text=Vim%20pelo%20site%20da%20Galli%20Topografia"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-xl bg-galli-green px-5 py-3 text-sm font-bold text-primary-foreground shadow-lg shadow-galli-green/20 transition-all hover:-translate-y-0.5 hover:shadow-xl"

@@ -3,7 +3,7 @@ import { MessageCircle } from "lucide-react";
 export function WhatsAppButton() {
   return (
     <a
-      href="https://wa.me/5554984007983?text=Gostaria%20de%20agendar%20uma%20consultoria"
+      href="https://wa.me/5554984007983?text=Vim%20pelo%20site%20da%20Galli%20Topografia"
       target="_blank"
       rel="noopener noreferrer"
       className="fixed bottom-6 right-6 z-50 flex h-16 w-16 items-center justify-center rounded-full bg-galli-green shadow-xl shadow-galli-green/30 transition-all hover:-translate-y-1 hover:shadow-2xl hover:shadow-galli-green/40"
