@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Menu, X, Phone } from "lucide-react";
 import { useState } from "react";
-import logoImg from "@/assets/logo-horizontal.png";
+
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -19,7 +19,7 @@ export function Header() {
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link to="/" className="group flex items-center -my-4">
           <img
-            src={logoImg}
+            src="https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1778159686833_r0yhpr_LOGO_2_HORIZONTAL_GALLI_topografia_e_georreferenciamento.png"
             alt="Galli Topografia e Georreferenciamento"
             className="h-28 w-auto md:h-32 object-contain rendering-pixelated"
             style={{ imageRendering: 'auto' }}

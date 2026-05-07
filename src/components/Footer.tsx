@@ -10,7 +10,7 @@ export function Footer() {
           <div>
             <div className="flex items-center">
               <img
-                src="https://gallitopografia.com.br/wp-content/uploads/2025/09/LOGO-GALLI-7.webp"
+                src="https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1778159686833_r0yhpr_LOGO_2_HORIZONTAL_GALLI_topografia_e_georreferenciamento.png"
                 alt="Galli Topografia e Georreferenciamento"
                 className="h-20 w-auto md:h-24"
                 loading="lazy"
