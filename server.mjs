@@ -48,8 +48,8 @@ app.use(
     let pathname = url.pathname;
     
     if (pathname.includes('..')) return;
-    if (pathname === '/') return;
-
+    
+    // Support root paths for common assets
     const filePath = path.join(__dirname, 'dist', 'client', pathname);
     
     try {
@@ -71,10 +71,17 @@ app.use(
 // SSR handler
 app.use(
   eventHandler(async (event) => {
+    const host = event.node.req.headers.host || 'localhost';
+    const protocol = event.node.req.headers['x-forwarded-proto'] || 'http';
+    const url = new URL(event.node.req.url, protocol + '://' + host);
+
+    // If it looks like a static asset that wasn't caught by the static server, 
+    // it's likely a 404 or something we shouldn't SSR.
+    if (url.pathname.startsWith('/assets/') || url.pathname.includes('.')) {
+      return;
+    }
+
     try {
-      const host = event.node.req.headers.host || 'localhost';
-      const url = new URL(event.node.req.url, 'http://' + host);
-      
       const requestHeaders = new Headers();
       Object.entries(event.node.req.headers).forEach(([key, value]) => {
         if (Array.isArray(value)) {
@@ -87,7 +94,6 @@ app.use(
       const request = new Request(url.toString(), {
         method: event.node.req.method,
         headers: requestHeaders,
-        // For GET/HEAD, body must be null
         body: ['GET', 'HEAD'].includes(event.node.req.method) ? null : event.node.req
       });
 
