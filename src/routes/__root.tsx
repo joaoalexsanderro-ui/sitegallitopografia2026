@@ -2,6 +2,7 @@ import { Outlet, Link, createRootRoute } from "@tanstack/react-router";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { WhatsAppButton } from "../components/WhatsAppButton";
+import { useEffect } from "react";
 
 function NotFoundComponent() {
   return (
@@ -31,6 +32,12 @@ export const Route = createRootRoute({
 });
 
 function RootComponent() {
+  useEffect(() => {
+    // Restore global font
+    document.body.classList.add("font-sans", "antialiased");
+    document.body.style.fontFamily = "'Inter', sans-serif";
+  }, []);
+
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
@@ -42,4 +49,5 @@ function RootComponent() {
     </div>
   );
 }
+
 
