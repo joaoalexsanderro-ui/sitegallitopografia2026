@@ -114,13 +114,12 @@ app.use(
       // Reconstruct the full URL for the internal router
       const fullUrl = new URL(rawUrl, `${protocol}://${host}`);
       
-      // If we have a prefix and it's missing from the pathname, we MUST add it
-      // so the router can match the route if it was built with a base path.
-      // If the router was built with base: '/', then adding the prefix might break matching.
-      // However, the user explicitly asked to respect X-Forwarded-Prefix.
-      if (prefix && !fullUrl.pathname.startsWith(prefix)) {
+      // Normalize prefix: ignore if it's just "/"
+      const normalizedPrefix = (prefix === '/' ? '' : prefix);
+      
+      if (normalizedPrefix && !fullUrl.pathname.startsWith(normalizedPrefix)) {
         const oldPath = fullUrl.pathname;
-        fullUrl.pathname = path.join(prefix, oldPath).replace(/\/+/g, '/');
+        fullUrl.pathname = path.join(normalizedPrefix, oldPath).replace(/\/+/g, '/');
         console.log(`[SSR] Adjusted URL with prefix: ${oldPath} -> ${fullUrl.pathname}`);
       }
 
@@ -157,6 +156,12 @@ app.use(
       }
 
       const responseText = await response.text();
+      
+      // Ensure correct content type for HTML responses
+      if (responseText.trim().startsWith('<!DOCTYPE html>') || responseText.trim().startsWith('<html')) {
+        event.node.res.setHeader('Content-Type', 'text/html; charset=utf-8');
+      }
+      
       console.log(`[SSR] Body length: ${responseText.length}`);
       return responseText;
     } catch (error) {
