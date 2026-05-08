@@ -165,10 +165,14 @@ app.use(
       
       // Inject base path if prefix exists to help with asset loading
       if (normalizedPrefix && (responseText.includes('<!DOCTYPE html>') || responseText.includes('<html'))) {
-        // Simple injection before </head>
         // Ensure the base href ends with a slash
         const baseHref = normalizedPrefix.endsWith('/') ? normalizedPrefix : `${normalizedPrefix}/`;
-        const baseTag = `<base href="${baseHref}">`;
+        
+        // Use an absolute URL for base href to avoid relative path issues
+        const protocolAndHost = `${protocol}://${host}`;
+        const absoluteBaseHref = `${protocolAndHost}${baseHref}`;
+        const baseTag = `<base href="${absoluteBaseHref}">`;
+        
         if (responseText.includes('</head>')) {
           responseText = responseText.replace('</head>', `${baseTag}</head>`);
         }
