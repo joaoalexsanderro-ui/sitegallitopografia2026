@@ -157,7 +157,16 @@ app.use(
         event.node.res.setHeader('Content-Type', 'text/html; charset=utf-8');
       }
 
-      const responseText = await response.text();
+      let responseText = await response.text();
+      
+      // Inject base path if prefix exists to help with asset loading
+      if (normalizedPrefix && (responseText.includes('<!DOCTYPE html>') || responseText.includes('<html'))) {
+        // Simple injection before </head>
+        const baseTag = `<base href="${normalizedPrefix}/">`;
+        if (responseText.includes('</head>')) {
+          responseText = responseText.replace('</head>', `${baseTag}</head>`);
+        }
+      }
       
       // Force text/html for HTML content
       if (responseText.trim().startsWith('<!DOCTYPE html>') || responseText.trim().startsWith('<html')) {
