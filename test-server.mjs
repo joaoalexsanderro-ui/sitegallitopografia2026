@@ -6,31 +6,27 @@ const server = spawn('node', ['server.mjs'], {
 
 server.stdout.on('data', async (data) => {
   const output = data.toString();
-  console.log('Server:', output);
+  process.stdout.write('Server: ' + output);
   
   if (output.includes('Server ready')) {
-    console.log('Testing requests...');
+    console.log('\nTesting requests...');
     
     try {
-      // Test 1: Request with prefix that should be stripped for static file
-      const res1 = await fetch('http://localhost:3001/subpath/assets/styles-B6ACmZ7M.css', {
+      // Test 1: SSR request without prefix
+      const res1 = await fetch('http://localhost:3001/');
+      console.log(`Test 1 (SSR /): ${res1.status} ${res1.headers.get('content-type')}`);
+      const body1 = await res1.text();
+      console.log(`Test 1 body length: ${body1.length}`);
+      if (body1.length > 0) console.log(`Test 1 body starts with: ${body1.substring(0, 50)}`);
+
+      // Test 2: SSR request with prefix
+      const res2 = await fetch('http://localhost:3001/', {
         headers: { 'X-Forwarded-Prefix': '/subpath' }
       });
-      console.log(`Test 1 (Static with prefix): ${res1.status} ${res1.headers.get('content-type')}`);
+      console.log(`Test 2 (SSR / with prefix): ${res2.status} ${res2.headers.get('content-type')}`);
+      const body2 = await res2.text();
+      console.log(`Test 2 body length: ${body2.length}`);
 
-      // Test 2: Request without prefix
-      const res2 = await fetch('http://localhost:3001/assets/styles-B6ACmZ7M.css');
-      console.log(`Test 2 (Static without prefix): ${res2.status} ${res2.headers.get('content-type')}`);
-
-      // Test 3: SSR request
-      const res3 = await fetch('http://localhost:3001/', {
-        headers: { 'X-Forwarded-Prefix': '/subpath' }
-      });
-      console.log(`Test 3 (SSR with prefix): ${res3.status} ${res3.headers.get('content-type')}`);
-      
-      const text3 = await res3.text();
-      console.log(`Test 3 body length: ${text3.length}`);
-      
     } catch (e) {
       console.error('Test failed:', e);
     } finally {
@@ -41,7 +37,7 @@ server.stdout.on('data', async (data) => {
 });
 
 server.stderr.on('data', (data) => {
-  console.error('Server error:', data.toString());
+  process.stderr.write('Server error: ' + data.toString());
 });
 
 setTimeout(() => {
