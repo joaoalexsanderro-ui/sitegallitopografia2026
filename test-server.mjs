@@ -1,4 +1,3 @@
-import { fetch } from 'node-fetch';
 import { spawn } from 'child_process';
 
 const server = spawn('node', ['server.mjs'], {
@@ -6,8 +5,11 @@ const server = spawn('node', ['server.mjs'], {
 });
 
 server.stdout.on('data', async (data) => {
-  if (data.toString().includes('Server ready')) {
-    console.log('Server started. Testing requests...');
+  const output = data.toString();
+  console.log('Server:', output);
+  
+  if (output.includes('Server ready')) {
+    console.log('Testing requests...');
     
     try {
       // Test 1: Request with prefix that should be stripped for static file
@@ -25,10 +27,15 @@ server.stdout.on('data', async (data) => {
         headers: { 'X-Forwarded-Prefix': '/subpath' }
       });
       console.log(`Test 3 (SSR with prefix): ${res3.status} ${res3.headers.get('content-type')}`);
+      
+      const text3 = await res3.text();
+      console.log(`Test 3 body length: ${text3.length}`);
+      
     } catch (e) {
       console.error('Test failed:', e);
     } finally {
       server.kill();
+      process.exit(0);
     }
   }
 });
@@ -36,3 +43,9 @@ server.stdout.on('data', async (data) => {
 server.stderr.on('data', (data) => {
   console.error('Server error:', data.toString());
 });
+
+setTimeout(() => {
+  console.error('Timeout');
+  server.kill();
+  process.exit(1);
+}, 20000);
