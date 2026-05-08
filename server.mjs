@@ -163,24 +163,28 @@ app.use(
 
       let responseText = await response.text();
       
-      // Inject base path if prefix exists to help with asset loading
-      if (normalizedPrefix && (responseText.includes('<!DOCTYPE html>') || responseText.includes('<html'))) {
-        // Ensure the base href ends with a slash
-        const baseHref = normalizedPrefix.endsWith('/') ? normalizedPrefix : `${normalizedPrefix}/`;
-        
-        // Use an absolute URL for base href to avoid relative path issues
-        const protocolAndHost = `${protocol}://${host}`;
-        const absoluteBaseHref = `${protocolAndHost}${baseHref}`;
-        const baseTag = `<base href="${absoluteBaseHref}">`;
-        
-        if (responseText.includes('</head>')) {
-          responseText = responseText.replace('</head>', `${baseTag}</head>`);
-        }
-      }
+      // Handle HTML content specifically for prefixes and base tags
+      const isHtml = responseText.trim().startsWith('<!DOCTYPE html>') || responseText.trim().startsWith('<html');
       
-      // Force text/html for HTML content
-      if (responseText.trim().startsWith('<!DOCTYPE html>') || responseText.trim().startsWith('<html')) {
+      if (isHtml) {
         event.node.res.setHeader('Content-Type', 'text/html; charset=utf-8');
+        
+        if (normalizedPrefix) {
+          // Ensure the base href ends with a slash
+          const baseHref = normalizedPrefix.endsWith('/') ? normalizedPrefix : `${normalizedPrefix}/`;
+          
+          // Use an absolute URL for base href to avoid relative path issues
+          const protocolAndHost = `${protocol}://${host}`;
+          const absoluteBaseHref = `${protocolAndHost}${baseHref}`;
+          const baseTag = `<base href="${absoluteBaseHref}">`;
+          
+          if (responseText.includes('</head>')) {
+            responseText = responseText.replace('</head>', `${baseTag}</head>`);
+          } else {
+            // If no </head>, try to inject at the start of <html> or at the very beginning
+            responseText = responseText.replace(/<html[^>]*>/i, `$&${baseTag}`);
+          }
+        }
       } else if (!event.node.res.getHeader('Content-Type')) {
         event.node.res.setHeader('Content-Type', 'text/html; charset=utf-8');
       }
