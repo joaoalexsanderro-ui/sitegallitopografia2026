@@ -92,17 +92,23 @@ app.use(
       }
     }
 
+    // Health check
+    if (pathname === '/health') {
+      return 'OK';
+    }
+
     // 2. SSR Handling
     if (!handler) {
       console.error('[SSR] Handler not available');
       throw createError({ statusCode: 500, statusMessage: 'Server build not loaded' });
     }
 
-    // Skip SSR for asset-like paths that weren't found in static files
-    if (pathname.includes('.') && !pathname.endsWith('.html') && !pathname.endsWith('.php')) {
-      console.log(`[404] Asset not found: ${pathname}`);
-      return createError({ statusCode: 404, statusMessage: 'Not Found' });
-    }
+      // Skip SSR for asset-like paths that weren't found in static files
+      if (pathname.includes('.') && !pathname.endsWith('.html') && !pathname.endsWith('.php')) {
+        console.log(`[404] Asset not found: ${pathname}`);
+        event.node.res.statusCode = 404;
+        return 'Not Found';
+      }
 
     try {
       // Reconstruct the full URL for the internal router
@@ -150,11 +156,9 @@ app.use(
         event.node.res.setHeader('Content-Type', 'text/html; charset=utf-8');
       }
 
-      // Handle stream or text
-      if (response.body) {
-        return sendStream(event, response.body);
-      }
-      return await response.text();
+      const responseText = await response.text();
+      console.log(`[SSR] Body length: ${responseText.length}`);
+      return responseText;
     } catch (error) {
       console.error('[SSR] Error:', error);
       return createError({
