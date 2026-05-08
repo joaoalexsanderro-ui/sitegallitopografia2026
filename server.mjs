@@ -119,10 +119,12 @@ app.use(
       
       // If we are behind a proxy that strips the prefix but we need it for routing,
       // we must ensure the URL passed to the internal router has the correct pathname.
-      if (normalizedPrefix && !fullUrl.pathname.startsWith(normalizedPrefix)) {
-        const originalPath = fullUrl.pathname;
-        fullUrl.pathname = path.join(normalizedPrefix, originalPath).replace(/\/+/g, '/');
-        console.log(`[SSR] Restoring prefix for routing: ${originalPath} -> ${fullUrl.pathname}`);
+      if (normalizedPrefix) {
+        if (!fullUrl.pathname.startsWith(normalizedPrefix)) {
+          const originalPath = fullUrl.pathname;
+          fullUrl.pathname = path.join(normalizedPrefix, originalPath).replace(/\/+/g, '/');
+          console.log(`[SSR] Restoring prefix for routing: ${originalPath} -> ${fullUrl.pathname}`);
+        }
       }
       
       console.log(`[SSR] Final URL for router: ${fullUrl.toString()}`);
@@ -164,7 +166,9 @@ app.use(
       // Inject base path if prefix exists to help with asset loading
       if (normalizedPrefix && (responseText.includes('<!DOCTYPE html>') || responseText.includes('<html'))) {
         // Simple injection before </head>
-        const baseTag = `<base href="${normalizedPrefix}/">`;
+        // Ensure the base href ends with a slash
+        const baseHref = normalizedPrefix.endsWith('/') ? normalizedPrefix : `${normalizedPrefix}/`;
+        const baseTag = `<base href="${baseHref}">`;
         if (responseText.includes('</head>')) {
           responseText = responseText.replace('</head>', `${baseTag}</head>`);
         }
