@@ -117,11 +117,13 @@ app.use(
       // Normalize prefix: ignore if it's just "/"
       const normalizedPrefix = (prefix === '/' ? '' : prefix);
       
-      // We should NOT adjust the URL if the router is not expecting a base path.
-      // TanStack Start handles the routing internally. 
-      // If we are behind a proxy that strips the prefix, the router gets a path without it.
-      // If the proxy KEEPS the prefix, the router gets a path WITH it.
-      // Most of the time, the router is built to match the path it receives.
+      // If we are behind a proxy that strips the prefix but we need it for routing,
+      // we must ensure the URL passed to the internal router has the correct pathname.
+      if (normalizedPrefix && !fullUrl.pathname.startsWith(normalizedPrefix)) {
+        const originalPath = fullUrl.pathname;
+        fullUrl.pathname = path.join(normalizedPrefix, originalPath).replace(/\/+/g, '/');
+        console.log(`[SSR] Restoring prefix for routing: ${originalPath} -> ${fullUrl.pathname}`);
+      }
       
       console.log(`[SSR] Final URL for router: ${fullUrl.toString()}`);
 
