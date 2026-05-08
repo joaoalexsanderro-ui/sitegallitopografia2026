@@ -8,7 +8,7 @@ server.stdout.on('data', async (data) => {
   const output = data.toString();
   process.stdout.write('Server: ' + output);
   
-  if (output.includes('Server ready')) {
+  if (output.includes('Ready at')) {
     console.log('\nTesting requests...');
     
     try {
