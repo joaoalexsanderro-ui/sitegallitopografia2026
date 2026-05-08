@@ -50,19 +50,29 @@ const getMimeType = (ext) => {
   return mimes[ext.toLowerCase()] || 'application/octet-stream';
 };
 
-// SSR Handler MUST COME FIRST if we want to handle routes correctly
-// Or we need to be very specific about what is a static file
+// SSR Handler and Static File Logic
 app.use(
   eventHandler(async (event) => {
-    const url = new URL(event.node.req.url, `http://${event.node.req.headers.host || 'localhost'}`);
-    const pathname = url.pathname;
+    const host = event.node.req.headers.host || 'localhost';
+    const protocol = event.node.req.headers['x-forwarded-proto'] || 'http';
+    const prefix = event.node.req.headers['x-forwarded-prefix'] || '';
+    
+    const url = new URL(event.node.req.url, `${protocol}://${host}`);
+    let pathname = url.pathname;
 
     if (pathname.includes('..')) return;
 
-    // Resolve file path relative to dist/client
-    const filePath = path.join(__dirname, 'dist', 'client', pathname);
+    // Check for static files. 
+    // If we have a prefix, we try to look for the file both with and without the prefix.
+    let staticPathsToTry = [pathname];
+    if (prefix && pathname.startsWith(prefix)) {
+      let stripped = pathname.slice(prefix.length);
+      if (!stripped.startsWith('/')) stripped = '/' + stripped;
+      staticPathsToTry.push(stripped);
+    }
 
-    try {
+    for (const p of staticPathsToTry) {
+      const filePath = path.join(__dirname, 'dist', 'client', p);
       if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
         const ext = path.extname(filePath);
         event.node.res.setHeader('Content-Type', getMimeType(ext));
@@ -71,9 +81,8 @@ app.use(
         const stream = fs.createReadStream(filePath);
         return sendStream(event, stream);
       }
-    } catch (e) {
-      // Fall through
     }
+
 
     // SSR Handler
     if (!handler) {
@@ -98,10 +107,12 @@ app.use(
       
       const fullUrl = new URL(event.node.req.url, `${protocol}://${host}`);
       
-      // If a prefix is provided (e.g., when running in a subdirectory),
-      // ensure the URL passed to the router includes it if not already present.
+      // Normalize the URL for the SSR handler.
+      // If the prefix is missing from the pathname, prepend it.
       if (prefix && !fullUrl.pathname.startsWith(prefix)) {
-        fullUrl.pathname = path.join(prefix, fullUrl.pathname).replace(/\/+/g, '/');
+        const originalPath = fullUrl.pathname;
+        fullUrl.pathname = path.join(prefix, originalPath).replace(/\/+/g, '/');
+        console.log(`Prefixing URL: ${originalPath} -> ${fullUrl.pathname}`);
       }
 
       const requestHeaders = new Headers();
