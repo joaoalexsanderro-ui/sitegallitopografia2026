@@ -163,6 +163,8 @@ app.use(
       } else if (!event.node.res.getHeader('Content-Type')) {
         event.node.res.setHeader('Content-Type', 'text/html; charset=utf-8');
       }
+      
+      return responseText;
     } catch (error) {
       console.error('[SSR] Error:', error);
       return createError({
