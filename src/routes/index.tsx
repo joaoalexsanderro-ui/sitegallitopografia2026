@@ -523,7 +523,7 @@ function TeamSection() {
           <div className="relative overflow-hidden rounded-3xl border bg-card shadow-2xl transition-all duration-300 hover:shadow-primary/5">
             <div className="aspect-[21/9] w-full bg-muted animate-pulse">
               <img
-                src="https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1778162893488_gm62k9_ChatGPT_Image_7_05_2026__11_07_50.png"
+                src="https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1778200779314_qopphf_foto_das_equipe_.jpeg"
                 alt="Equipe Galli Topografia"
                 className="h-full w-full object-cover transition-opacity duration-500"
                 onLoad={(e) => (e.currentTarget.parentElement!.classList.remove('animate-pulse'))}
