@@ -157,13 +157,12 @@ app.use(
 
       const responseText = await response.text();
       
-      // Ensure correct content type for HTML responses
+      // Force text/html for HTML content
       if (responseText.trim().startsWith('<!DOCTYPE html>') || responseText.trim().startsWith('<html')) {
         event.node.res.setHeader('Content-Type', 'text/html; charset=utf-8');
+      } else if (!event.node.res.getHeader('Content-Type')) {
+        event.node.res.setHeader('Content-Type', 'text/html; charset=utf-8');
       }
-      
-      console.log(`[SSR] Body length: ${responseText.length}`);
-      return responseText;
     } catch (error) {
       console.error('[SSR] Error:', error);
       return createError({
