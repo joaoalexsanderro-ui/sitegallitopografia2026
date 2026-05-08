@@ -117,11 +117,13 @@ app.use(
       // Normalize prefix: ignore if it's just "/"
       const normalizedPrefix = (prefix === '/' ? '' : prefix);
       
-      if (normalizedPrefix && !fullUrl.pathname.startsWith(normalizedPrefix)) {
-        const oldPath = fullUrl.pathname;
-        fullUrl.pathname = path.join(normalizedPrefix, oldPath).replace(/\/+/g, '/');
-        console.log(`[SSR] Adjusted URL with prefix: ${oldPath} -> ${fullUrl.pathname}`);
-      }
+      // We should NOT adjust the URL if the router is not expecting a base path.
+      // TanStack Start handles the routing internally. 
+      // If we are behind a proxy that strips the prefix, the router gets a path without it.
+      // If the proxy KEEPS the prefix, the router gets a path WITH it.
+      // Most of the time, the router is built to match the path it receives.
+      
+      console.log(`[SSR] Final URL for router: ${fullUrl.toString()}`);
 
       const requestHeaders = new Headers();
       Object.entries(event.node.req.headers).forEach(([key, value]) => {
@@ -155,7 +157,16 @@ app.use(
         event.node.res.setHeader('Content-Type', 'text/html; charset=utf-8');
       }
 
-      const responseText = await response.text();
+      let responseText = await response.text();
+      
+      // Inject base path if prefix exists to help with asset loading
+      if (normalizedPrefix && (responseText.includes('<!DOCTYPE html>') || responseText.includes('<html'))) {
+        // Simple injection before </head>
+        const baseTag = `<base href="${normalizedPrefix}/">`;
+        if (responseText.includes('</head>')) {
+          responseText = responseText.replace('</head>', `${baseTag}</head>`);
+        }
+      }
       
       // Force text/html for HTML content
       if (responseText.trim().startsWith('<!DOCTYPE html>') || responseText.trim().startsWith('<html')) {
