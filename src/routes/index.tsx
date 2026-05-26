@@ -412,7 +412,7 @@ function ServicesSection() {
 function HowItWorksSection() {
   const steps = [
     { number: "01", title: "Agendamento", description: "Entre em contato pelo WhatsApp e agende sua consultoria gratuita.", color: "bg-[#2c67a4]" },
-    { number: "02", title: "Análise gratuita", description: "Visitamos seu imóvel, analisamos documentação e tiramos suas dúvidas — sem custo.", color: "bg-[#2c67a4]" },
+    { number: "02", title: "Análise gratuita", description: "Analizamos a documentação, tiramos suas duvidas e te apresentamos a solução do seu caso, sem custo.", color: "bg-[#2c67a4]" },
     { number: "03", title: "Proposta", description: "Apresentamos as melhores soluções de forma econômica e prática.", color: "bg-[#2c67a4]" },
     { number: "04", title: "Execução completa", description: "Medição, projeto, assinaturas, protocolo em cartório e acompanhamento.", color: "bg-[#2c67a4]" },
   ];
@@ -521,11 +521,11 @@ function TeamSection() {
         <div className="mt-16 space-y-12">
           {/* Foto da Equipe Completa */}
           <div className="relative overflow-hidden rounded-3xl border bg-card shadow-2xl transition-all duration-300 hover:shadow-primary/5">
-            <div className="aspect-[21/9] w-full bg-muted animate-pulse">
+            <div className="aspect-[21/9] w-full bg-muted animate-pulse relative overflow-hidden">
               <img
                 src="https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1778200779314_qopphf_foto_das_equipe_.jpeg"
                 alt="Equipe Galli Topografia"
-                className="h-full w-full object-cover transition-opacity duration-500"
+                className="h-full w-full object-cover transition-opacity duration-500 scale-[1.3] object-[center_35%]"
                 onLoad={(e) => (e.currentTarget.parentElement!.classList.remove('animate-pulse'))}
               />
             </div>
