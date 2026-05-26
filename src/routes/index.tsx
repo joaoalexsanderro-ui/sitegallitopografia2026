@@ -525,7 +525,7 @@ function TeamSection() {
               <img
                 src="https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1778200779314_qopphf_foto_das_equipe_.jpeg"
                 alt="Equipe Galli Topografia"
-                className="h-full w-full object-cover transition-opacity duration-500 scale-[1.3] object-[center_35%]"
+                className="h-full w-full object-cover transition-opacity duration-500 scale-[1.3] object-center"
                 onLoad={(e) => (e.currentTarget.parentElement!.classList.remove('animate-pulse'))}
               />
             </div>
