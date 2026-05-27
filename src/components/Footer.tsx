@@ -12,7 +12,7 @@ export function Footer() {
               <img
                 src="https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1778164744128_5aobqm_Logo_Teste_S_mbolo_-_C_pia.png"
                 alt="Galli Topografia e Georreferenciamento"
-                className="h-24 w-auto md:h-28"
+                className="h-16 w-auto md:h-20 object-contain"
                 loading="lazy"
               />
             </div>
@@ -45,10 +45,18 @@ export function Footer() {
               <a href="https://www.instagram.com/gallitopografia/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2.5 text-sm text-muted-foreground transition-colors hover:text-primary">
                 <Instagram className="h-4 w-4 shrink-0 text-primary" /> @gallitopografia
               </a>
-              <div className="flex items-start gap-2.5 text-sm text-muted-foreground">
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                <span>Av. 7 de Setembro, 1952, sala 2<br />Tapejara/RS</span>
-              </div>
+              <a 
+                href="https://www.google.com/maps/search/?api=1&query=Galli+Topografia+e+Georreferenciamento,+Av.+Sete+de+Setembro,+1952+-+Centro,+Tapejara+-+RS,+99950-000" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="group flex items-start gap-2.5 text-sm text-muted-foreground transition-colors hover:text-primary"
+              >
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary group-hover:animate-bounce" />
+                <span>
+                  Av. 7 de Setembro, 1952, sala 2<br />
+                  Tapejara/RS
+                </span>
+              </a>
             </div>
           </div>
 
