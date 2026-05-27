@@ -500,10 +500,10 @@ function UrgencySection() {
 /* ─── EQUIPE ─── */
 function TeamSection() {
   const team = [
-    { name: "Fabiano Marcos Galli", role: "Fundador Resp. Técnico", photo: "https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1779920155259_v124x2_equipe_Galli__1_.png" },
-    { name: "Talita Nunes Galli", role: "Administrativo", photo: "https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1779920155259_d6q219_equipe_Galli__2_.png" },
-    { name: "Eduardo Cichelero", role: "Setor de Projetos", photo: "https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1779920155259_72xajz_equipe_Galli__3_.png" },
-    { name: "Deivid Campos", role: "Técnico de Campo", photo: "https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1779920155259_4q9c6t_equipe_Galli__4_.png" },
+    { name: "Fabiano Marcos Galli", role: "Fundador Resp. Técnico", photo: "https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1779920155259_v124x2_equipe_Galli__1_.png?t=1" },
+    { name: "Talita Nunes Galli", role: "Administrativo", photo: "https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1779920155259_d6q219_equipe_Galli__2_.png?t=1" },
+    { name: "Eduardo Cichelero", role: "Setor de Projetos", photo: "https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1779920155259_72xajz_equipe_Galli__3_.png?t=1" },
+    { name: "Deivid Campos", role: "Técnico de Campo", photo: "https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1779920155259_4q9c6t_equipe_Galli__4_.png?t=1" },
   ];
 
   return (
