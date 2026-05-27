@@ -176,7 +176,7 @@ function StatsSection() {
           {stats.map((s) => (
             <div key={s.label} className="group relative rounded-2xl border bg-card p-6 text-center transition-all hover:border-primary/20 hover:shadow-lg">
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/[0.03] to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
-              <p className={`relative text-4xl font-black ${s.color} sm:text-5xl`}>
+              <p className={`relative flex flex-wrap items-baseline justify-center gap-1 text-4xl font-black ${s.color} sm:text-5xl`}>
                 {s.value}<span className="text-2xl sm:text-3xl">{s.suffix}</span>
               </p>
               <p className="relative mt-2 text-sm font-medium text-muted-foreground">{s.label}</p>
