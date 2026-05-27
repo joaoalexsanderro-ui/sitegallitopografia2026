@@ -649,7 +649,7 @@ function TestimonialsSection() {
 /* ─── FAQ ─── */
 function FAQSection() {
   const faqs = [
-    { q: "Vou precisar pagar alguma coisa na consultoria?", a: "Não! O atendimento é completamente gratuito. Visitamos seu imóvel, analisamos documentações e propomos soluções, tudo sem custo para você." },
+    { q: "Vou precisar pagar alguma coisa na consultoria?", a: "Não! O atendimento é completamente gratuito. Analisamos documentações e propomos soluções, tudo sem custo para você." },
     { q: "É muito caro resolver a situação do meu imóvel?", a: "É muito comum resolvermos na própria consultoria. Em muitos casos, a situação é mais simples do que você imagina. Os valores variam conforme tamanho da área." },
     { q: "É muito burocrático?", a: "Nós fazemos todo o trabalho duro: medição, projeto, coleta de assinaturas dos vizinhos, protocolo em cartório, correções e acompanhamento. Atualizamos você a cada etapa." },
     { q: "Demora muito tempo pra resolver?", a: "O tempo depende do serviço, mas temos um time que acompanha seu processo desde o primeiro dia, garantindo a conclusão no tempo mais rápido possível." },
