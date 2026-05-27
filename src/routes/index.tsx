@@ -595,10 +595,10 @@ function TestimonialsSection() {
         </div>
         {/* Featured Video Testimonial */}
         <div className="mt-16 flex justify-center">
-          <div className="w-full max-w-2xl overflow-hidden rounded-3xl border border-white/50 bg-white shadow-xl">
-            <div className="aspect-[9/16] max-h-[600px] w-full bg-muted sm:aspect-video sm:max-h-none">
+          <div className="w-full max-w-sm overflow-hidden rounded-3xl border border-white/50 bg-white shadow-xl sm:max-w-md">
+            <div className="aspect-[9/16] w-full bg-black">
               <iframe
-                src="https://www.instagram.com/reel/DXb0aq1khCT/embed"
+                src="https://www.instagram.com/reel/DXb0aq1khCT/embed/captioned/"
                 className="h-full w-full"
                 frameBorder="0"
                 scrolling="no"
@@ -606,7 +606,7 @@ function TestimonialsSection() {
                 allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
               ></iframe>
             </div>
-            <div className="p-6 text-center">
+            <div className="p-6 text-center border-t">
               <div className="mb-2 flex justify-center gap-1">
                 {[...Array(5)].map((_, j) => (
                   <Star key={j} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
