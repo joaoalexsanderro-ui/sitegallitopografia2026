@@ -500,10 +500,10 @@ function UrgencySection() {
 /* ─── EQUIPE ─── */
 function TeamSection() {
   const team = [
-    { name: "Fabiano Marcos Galli", role: "Fundador Resp. Técnico", photo: "https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1778162397719_p4ptvs_equipe_Galli__1_.png" },
-    { name: "Talita Nunes Galli", role: "Administrativo", photo: "https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1779881399292_hpaj3a_equipe_Galli__2_.png" },
-    { name: "Eduardo Cichelero", role: "Setor de Projetos", photo: "https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1779881550877_q5qgl7_equipe_Galli__3_.png" },
-    { name: "Deivid Campos", role: "Técnico de Campo", photo: "https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1779881647964_vwxrf9_equipe_Galli__4_.png" },
+    { name: "Fabiano Marcos Galli", role: "Fundador Resp. Técnico", photo: "https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1779919532591_euvndu_equipe_Galli__1_.png" },
+    { name: "Talita Nunes Galli", role: "Administrativo", photo: "https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1779919532591_p6it8m_equipe_Galli__2_.png" },
+    { name: "Eduardo Cichelero", role: "Setor de Projetos", photo: "https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1779919532592_6iv6cl_equipe_Galli__3_.png" },
+    { name: "Deivid Campos", role: "Técnico de Campo", photo: "https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1779919532592_j5433d_equipe_Galli__4_.png" },
   ];
 
   return (
