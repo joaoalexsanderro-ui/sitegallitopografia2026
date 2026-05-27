@@ -573,15 +573,13 @@ function TeamSection() {
 /* ─── TESTIMONIALS ─── */
 function TestimonialsSection() {
   const testimonials = [
-    { name: "Érica Lusa Favretto", text: "Ótimo trabalho, pessoal bem atencioso e dedicado!" },
-    { name: "Fernando Bordignon", text: "Serviço de topografia excelente e super preciso! Atendimento ágil, profissionalismo do início ao fim!" },
-    { name: "Fabio André Favreto", text: "Equipe de profissionais excelentes, trabalho ótimo." },
-    { name: "Vanessa Bernieri", text: "O melhor atendimento, uma empresa que transmite credibilidade, seriedade e competência." },
-    { name: "Jonas Anael Baptista Nunes", text: "Ótima empresa, profissionais de muita competência! Cumpriram tudo o que prometeram." },
-    { name: "Cristiano Manfro", text: "Muito bom atendimento com agilidade, profissionais de ótima qualidade." },
-    { name: "Guilherme Bernieri", text: "Excelente empresa, ótimo atendimento e muito prestativo, indicarei sempre que possível!" },
-    { name: "Atenon Net", text: "Super indico, muito atencioso e comprometido com o que faz." },
-    { name: "Jorge Cival Baptista Nunes", text: "Serviço de qualidade com profissional capacitado, cumprindo os prazos combinados." },
+    { name: "Junior Comparin", city: "Santa Cecília do Sul/RS", text: "Atendimento rápido. Serviço de qualidade." },
+    { name: "Érica Lusa Favretto", city: "Tapejara/RS", text: "Ótimo trabalho, pessoal bem atencioso e dedicado!" },
+    { name: "Douglas Mesavilla", city: "Água Santa/RS", text: "Trabalho de qualidade e transparência." },
+    { name: "Fernando Bordignon", city: "Vila Lângaro/RS", text: "Serviço de topografia excelente e super preciso! Atendimento ágil, profissionalismo do início ao fim!" },
+    { name: "Fábio André Favreto", city: "Tapejara/RS", text: "Equipe de profissionais excelentes, trabalho ótimo." },
+    { name: "Caroline Iziquiel Martins", city: "Pejuçara/RS", text: "Excelente atendimento e agilidade." },
+    { name: "Jonas Anael Baptista Nunes", city: "Balneário Camboriú/SC", text: "Ótima empresa, profissionais de muita competência! Cumpriram tudo o que prometeram." },
   ];
 
   return (
@@ -597,7 +595,7 @@ function TestimonialsSection() {
         </div>
         <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((t, i) => (
-            <div key={i} className="group relative rounded-2xl border border-white/50 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+            <div key={i} className="group relative flex flex-col rounded-2xl border border-white/50 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
               <div className="flex gap-1 mb-4">
                 {[...Array(5)].map((_, j) => (
                   <Star key={j} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
@@ -605,10 +603,13 @@ function TestimonialsSection() {
               </div>
               <p className="text-base leading-relaxed text-muted-foreground italic mb-6">"{t.text}"</p>
               <div className="mt-auto flex items-center gap-3">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#2d67a8] text-sm font-bold text-white uppercase">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#2c67a4] text-sm font-bold text-white uppercase shadow-md">
                   {t.name.charAt(0)}
                 </div>
-                <p className="text-sm font-bold text-foreground">{t.name}</p>
+                <div>
+                  <p className="text-sm font-bold text-foreground leading-tight">{t.name}</p>
+                  <p className="text-[11px] font-medium text-muted-foreground/70 uppercase tracking-wider">{t.city}</p>
+                </div>
               </div>
             </div>
           ))}
