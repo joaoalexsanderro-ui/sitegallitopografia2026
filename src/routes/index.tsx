@@ -500,10 +500,10 @@ function UrgencySection() {
 /* ─── EQUIPE ─── */
 function TeamSection() {
   const team = [
-    { name: "Fabiano Marcos Galli", role: "Fundador Resp. Técnico", photo: "https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1779919532591_euvndu_equipe_Galli__1_.png" },
-    { name: "Talita Nunes Galli", role: "Administrativo", photo: "https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1779919532591_p6it8m_equipe_Galli__2_.png" },
-    { name: "Eduardo Cichelero", role: "Setor de Projetos", photo: "https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1779919532592_6iv6cl_equipe_Galli__3_.png" },
-    { name: "Deivid Campos", role: "Técnico de Campo", photo: "https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1779919532592_j5433d_equipe_Galli__4_.png" },
+    { name: "Fabiano Marcos Galli", role: "Fundador Resp. Técnico", photo: "https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1778162397719_p4ptvs_equipe_Galli__1_.png" },
+    { name: "Talita Nunes Galli", role: "Administrativo", photo: "https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1779881399292_hpaj3a_equipe_Galli__2_.png" },
+    { name: "Eduardo Cichelero", role: "Setor de Projetos", photo: "https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1779881550877_q5qgl7_equipe_Galli__3_.png" },
+    { name: "Deivid Campos", role: "Técnico de Campo", photo: "https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1779881647964_vwxrf9_equipe_Galli__4_.png" },
   ];
 
   return (
@@ -523,7 +523,7 @@ function TeamSection() {
           <div className="relative overflow-hidden rounded-3xl border bg-card shadow-2xl transition-all duration-300 hover:shadow-primary/5">
             <div className="aspect-[21/9] w-full bg-muted animate-pulse relative overflow-hidden">
               <img
-                src="https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1779920155259_5q1vsl_foto_das_equipe_.jpeg"
+                src="https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1778200779314_qopphf_foto_das_equipe_.jpeg"
                 alt="Equipe Galli Topografia"
                 className="h-full w-full object-cover transition-opacity duration-500 scale-[1.3] object-center"
                 onLoad={(e) => (e.currentTarget.parentElement!.classList.remove('animate-pulse'))}
