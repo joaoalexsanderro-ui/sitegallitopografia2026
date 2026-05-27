@@ -12,7 +12,7 @@ export function Footer() {
               <img
                 src="https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1778164744128_5aobqm_Logo_Teste_S_mbolo_-_C_pia.png"
                 alt="Galli Topografia e Georreferenciamento"
-                className="h-24 w-auto md:h-28"
+                className="h-16 w-auto md:h-20 object-contain"
                 loading="lazy"
               />
             </div>
