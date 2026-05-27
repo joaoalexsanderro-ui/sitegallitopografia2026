@@ -502,7 +502,7 @@ function TeamSection() {
   const team = [
     { name: "Fabiano Marcos Galli", role: "Fundador Resp. Técnico", photo: "https://lh3.googleusercontent.com/d/1SgM7lmdCH1aoW0gDUSsebWWqsvuMeIQG" },
     { name: "Talita Nunes Galli", role: "Administrativo", photo: "https://lh3.googleusercontent.com/d/1MyRH5wz31gyRoyWDUH9bv2kQfrF7G8Go" },
-    { name: "Eduardo Cichelero", role: "Setor de Projetos", photo: "https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1779881550877_q5qgl7_equipe_Galli__3_.png" },
+    { name: "Eduardo Cichelero", role: "Setor de Projetos", photo: "https://lh3.googleusercontent.com/d/1Pxz6Isdft5s-guQHoa_i0ARJWh3YkHAB" },
     { name: "Deivid Campos", role: "Técnico de Campo", photo: "https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1779881647964_vwxrf9_equipe_Galli__4_.png" },
   ];
 
