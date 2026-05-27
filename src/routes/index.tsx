@@ -551,7 +551,9 @@ function TeamSection() {
                     width={320}
                     height={320}
                     className="h-full w-full object-cover"
+                    onLoad={(e) => console.log(`Imagem carregada: ${member.photo}`)}
                     onError={(e) => {
+                      console.error(`Erro ao carregar imagem: ${member.photo}`);
                       e.currentTarget.src = `https://avatar.vercel.sh/${member.name}?size=320&text=${member.name.charAt(0)}`;
                     }}
                   />
