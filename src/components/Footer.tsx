@@ -10,7 +10,7 @@ export function Footer() {
           <div>
             <div className="flex items-center">
               <img
-                src="https://lh3.googleusercontent.com/d/1PLRpXkOrJaEZ1A169DIxa8Ni0TNuxjg3"
+                src="https://lh3.googleusercontent.com/d/1FXFp962gdCPdAxpHCNaR_3wQL0ZpiHOT"
                 alt="Galli Topografia e Georreferenciamento"
                 className="h-16 w-auto md:h-20 object-contain"
               />
