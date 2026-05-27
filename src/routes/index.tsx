@@ -502,7 +502,7 @@ function TeamSection() {
   const team = [
     { name: "Fabiano Marcos Galli", role: "Fundador Resp. Técnico", photo: "https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1778162397719_p4ptvs_equipe_Galli__1_.png" },
     { name: "Talita Nunes Galli", role: "Administrativo", photo: "https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1779881399292_hpaj3a_equipe_Galli__2_.png" },
-    { name: "Eduardo Cichelero", role: "Setor de Projetos", photo: "https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1778200599127_o9kuon_2.png" },
+    { name: "Eduardo Cichelero", role: "Setor de Projetos", photo: "https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1779881550877_q5qgl7_equipe_Galli__3_.png" },
     { name: "Deivid Campos", role: "Técnico de Campo", photo: "https://rmetppilvfrxosvxzhgj.supabase.co/storage/v1/object/public/message-attachments/df909724-d1f2-4377-897e-dfbbd9509455/1778200655689_kgo5b9_1.png" },
   ];
 
