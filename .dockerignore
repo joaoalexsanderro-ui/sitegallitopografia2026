@@ -1,0 +1,12 @@
+.git
+.github
+.lovable
+node_modules
+dist
+.output
+.vinxi
+.tanstack
+.nitro
+*.log
+Dockerfile*
+README.md
